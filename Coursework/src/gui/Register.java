@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import data.AccountRequest;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
@@ -97,14 +100,6 @@ public class Register extends JFrame {
 		rbtnMale.setBounds(218, 282, 109, 23);
 		contentPane.add(rbtnMale);
 		
-		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnSubmit.setBounds(156, 374, 89, 23);
-		contentPane.add(btnSubmit);
-		
 		txtPassword = new JTextField();
 		txtPassword.setToolTipText("Enter Password");
 		txtPassword.setColumns(10);
@@ -119,5 +114,28 @@ public class Register extends JFrame {
 		spAge.setModel(new SpinnerNumberModel(1, 0, 115, 1));
 		spAge.setBounds(183, 216, 42, 34);
 		contentPane.add(spAge);
+		
+		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String name = txtName.getText();
+				String Surname = txtSurname.getText();
+				String address = txtAddress.getText();
+				int age = (int) spAge.getValue();
+				char gender = 'n';
+				if (rbtnFemale.isEnabled()) {
+					 gender = 'f';
+				}
+				else {
+					 gender = 'm';
+				}
+				String password = txtPassword.getText();
+				AccountRequest newAccount =  new AccountRequest(name, Surname, address, age, gender, password);
+			}
+		});
+		btnSubmit.setBounds(156, 374, 89, 23);
+		contentPane.add(btnSubmit);
+		
+		
 	}
 }
