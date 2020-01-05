@@ -1,4 +1,4 @@
-package patient;
+package gui.patient;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -74,5 +74,9 @@ public class AppointmentDetails extends JFrame {
 		JLabel lblWriteFeedback = new JLabel("Write Feedback");
 		lblWriteFeedback.setBounds(165, 165, 89, 14);
 		contentPane.add(lblWriteFeedback);
+		
+		JButton btnNewButton_1 = new JButton("Send Feedback");
+		btnNewButton_1.setBounds(160, 263, 120, 23);
+		contentPane.add(btnNewButton_1);
 	}
 }

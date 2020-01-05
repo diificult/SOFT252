@@ -1,4 +1,4 @@
-package doctor;
+package gui.admin;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,12 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
-import javax.swing.JList;
+import javax.swing.JComboBox;
 import java.awt.GridBagConstraints;
 import javax.swing.JButton;
+import javax.swing.JList;
 import java.awt.Insets;
 
-public class DoctorAppointmentList extends JFrame {
+public class RemoveAccount extends JFrame {
 
 	private JPanel contentPane;
 
@@ -23,7 +24,7 @@ public class DoctorAppointmentList extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DoctorAppointmentList frame = new DoctorAppointmentList();
+					RemoveAccount frame = new RemoveAccount();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +36,7 @@ public class DoctorAppointmentList extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DoctorAppointmentList() {
+	public RemoveAccount() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -44,31 +45,31 @@ public class DoctorAppointmentList extends JFrame {
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0};
 		gbl_contentPane.rowHeights = new int[]{0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-		JList list = new JList();
-		GridBagConstraints gbc_list = new GridBagConstraints();
-		gbc_list.gridwidth = 2;
-		gbc_list.insets = new Insets(0, 0, 5, 5);
-		gbc_list.fill = GridBagConstraints.BOTH;
-		gbc_list.gridx = 0;
-		gbc_list.gridy = 0;
-		contentPane.add(list, gbc_list);
+		JList listAccounts = new JList();
+		GridBagConstraints gbc_listAccounts = new GridBagConstraints();
+		gbc_listAccounts.gridwidth = 2;
+		gbc_listAccounts.insets = new Insets(0, 0, 5, 0);
+		gbc_listAccounts.fill = GridBagConstraints.BOTH;
+		gbc_listAccounts.gridx = 0;
+		gbc_listAccounts.gridy = 0;
+		contentPane.add(listAccounts, gbc_listAccounts);
 		
-		JButton btnNewButton = new JButton("Select Appointment");
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton.gridx = 0;
-		gbc_btnNewButton.gridy = 1;
-		contentPane.add(btnNewButton, gbc_btnNewButton);
+		JButton btnBack = new JButton("Back");
+		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
+		gbc_btnBack.gridx = 0;
+		gbc_btnBack.gridy = 1;
+		contentPane.add(btnBack, gbc_btnBack);
 		
-		JButton btnNewButton_1 = new JButton("Back");
-		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-		gbc_btnNewButton_1.gridx = 1;
-		gbc_btnNewButton_1.gridy = 1;
-		contentPane.add(btnNewButton_1, gbc_btnNewButton_1);
+		JButton btnRemove = new JButton("Remove");
+		GridBagConstraints gbc_btnRemove = new GridBagConstraints();
+		gbc_btnRemove.gridx = 1;
+		gbc_btnRemove.gridy = 1;
+		contentPane.add(btnRemove, gbc_btnRemove);
 	}
 
 }

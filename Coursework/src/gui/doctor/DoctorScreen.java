@@ -1,4 +1,4 @@
-package doctor;
+package gui.doctor;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

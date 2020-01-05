@@ -1,4 +1,4 @@
-package admin;
+package gui.secretary;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -6,13 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.GridLayout;
+import javax.swing.JButton;
 
-public class AdminScreen extends JFrame {
+public class SectetaryScreen extends JFrame {
 
 	private JPanel contentPane;
 
@@ -23,7 +20,7 @@ public class AdminScreen extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AdminScreen frame = new AdminScreen();
+					SectetaryScreen frame = new SectetaryScreen();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,24 +32,21 @@ public class AdminScreen extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AdminScreen() {
+	public SectetaryScreen() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 395);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(4, 3, 50, 3));
+		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JButton button = new JButton("Remove Account");
-		contentPane.add(button);
-		
-		JButton btnNewButton = new JButton("Create Account");
+		JButton btnNewButton = new JButton("Approve Accounts & Deactivation");
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("View Ratings");
+		JButton btnNewButton_1 = new JButton("Appointment Requests");
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Give Rating");
+		JButton btnNewButton_2 = new JButton("Remove Patients");
 		contentPane.add(btnNewButton_2);
 	}
 
