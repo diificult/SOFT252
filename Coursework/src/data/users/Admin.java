@@ -1,28 +1,21 @@
 package data.users;
 
-public class Patient implements iUser{
+public class Admin implements iUser {
 
 	private static String name;
 	private static String surname;
 	private static String id;
 	private static String address;
-	private static int age;
-	private static char gender;
 	private static String password;
 	
-	
-
-
-	public Patient(String name,  String surname, String id, String address, int age, char gender,String password) {
-		this.name = name;
-		this.surname = surname;
-		this.id =  id;
-		this.address = address;
-		this.age = age;
-		this.gender = gender;	
-		this.password = password;
+	public Admin(String name, String surname, String id, String address, String password) {
+		this.name= name;
+		this.surname= surname;
+		this.id= id;
+		this.address=  address;
+		this.password= password;
 	}
-
+	
 	@Override
 	public String getName() {
 		return name;
@@ -32,6 +25,7 @@ public class Patient implements iUser{
 	public String getID() {
 		return id;
 	}
+
 	@Override
 	public String getSurname() {
 		return surname;
@@ -46,5 +40,5 @@ public class Patient implements iUser{
 	public String getPassword() {
 		return password;
 	}
-	
+
 }

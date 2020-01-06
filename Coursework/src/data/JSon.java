@@ -15,6 +15,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
+import data.users.Patient;
+
 public class JSon {
 
 	
@@ -46,6 +48,40 @@ public class JSon {
 		try {
 			JsonReader jr = new JsonReader(new FileReader("RequestAccount.json"));
 			 request = gson.fromJson(jr, ACCOUNTREQUEST_TYPE);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return request;
+	}
+	
+	public static void storePatients(ArrayList<Patient> ar) {
+		GsonBuilder gb = new GsonBuilder();
+		gb.serializeNulls();
+		gb.setPrettyPrinting();
+		Gson RequestAccount = gb.create();
+		FileWriter fw;
+		try {
+			fw = new FileWriter("Patients.json");
+			
+			RequestAccount.toJson(ar, fw);
+			
+			fw.flush();
+			fw.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}	
+	}
+	
+	private static final Type PATIENT_TYPE = new TypeToken<ArrayList<Patient>>() {
+	}.getType();
+	
+	public static ArrayList<Patient> getPatientS() {
+		Gson gson = new Gson();
+		ArrayList<Patient> request = new ArrayList<Patient>();
+		try {
+			JsonReader jr = new JsonReader(new FileReader("Patients.json"));
+			 request = gson.fromJson(jr, PATIENT_TYPE);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

@@ -27,5 +27,15 @@ public class DataManager {
 	public static ArrayList<AccountRequest> GetAccountRequests() {
 		return RequestedAccounts;
 	}
+	
+	public static void AddPatient(Patient p) {
+		Patients.add(p);
+		JSon.storePatients(Patients);
+		
+	}
+	
+	public static ArrayList<Patient> GetPatients() {
+		return Patients;
+	}
 
 }
