@@ -16,4 +16,28 @@ public class AccountRequest {
 			RequestedGender =gender;
 			RequestedPassword = password;
 		}
+		
+		public String GetName() {
+			return RequestedName;
+		}
+		
+		public String GetSurname()  {
+			return RequestedSurname;
+		}
+		
+		public String GetAddress() {
+			return RequestedAddress;
+		}
+		
+		public int GetAge() {
+			return RequestedAge;
+		}
+		
+		public char GetGender() {
+			return RequestedGender;
+		}
+		
+		public String GetPassword(){
+			return RequestedPassword;
+		}
 }

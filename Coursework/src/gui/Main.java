@@ -12,4 +12,9 @@ public class Main {
 		Login l = new Login();
 		l.setVisible(true);
 	}
+
+	public static void OpenRegister()  {
+		Register r = new Register();
+		r.setVisible(true);
+	}
 }

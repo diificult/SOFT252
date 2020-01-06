@@ -8,9 +8,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import data.AccountRequest;
+import data.DataManager;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -131,6 +133,8 @@ public class Register extends JFrame {
 				}
 				String password = txtPassword.getText();
 				AccountRequest newAccount =  new AccountRequest(name, Surname, address, age, gender, password);
+				DataManager.storeRequestAccount(newAccount);
+				JOptionPane.showMessageDialog(contentPane, "You account request has been placed, please wait to hear back from a secretary");
 			}
 		});
 		btnSubmit.setBounds(156, 374, 89, 23);
