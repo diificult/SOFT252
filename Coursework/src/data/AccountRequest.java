@@ -8,12 +8,12 @@ public class AccountRequest {
 		private char RequestedGender;
 		private String RequestedPassword;
 		
-		public AccountRequest(String name,String surname, String address, int age,   char gender,String password) {
+		public AccountRequest(String name, String surname, String address, int age, char gender, String password) {
 			RequestedName = name;
 			RequestedSurname = surname;
 			RequestedAddress  = address;
 			RequestedAge = age;
-			RequestedGender =gender;
+			RequestedGender = gender;
 			RequestedPassword = password;
 		}
 		

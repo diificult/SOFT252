@@ -133,7 +133,7 @@ public class Register extends JFrame {
 				}
 				String password = txtPassword.getText();
 				AccountRequest newAccount =  new AccountRequest(name, Surname, address, age, gender, password);
-				DataManager.storeRequestAccount(newAccount);
+				DataManager.AddAccountRequest(newAccount);
 				JOptionPane.showMessageDialog(contentPane, "You account request has been placed, please wait to hear back from a secretary");
 			}
 		});
