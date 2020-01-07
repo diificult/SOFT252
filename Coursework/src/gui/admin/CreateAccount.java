@@ -6,22 +6,25 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
-import javax.swing.JList;
-import java.awt.GridBagConstraints;
-import javax.swing.JButton;
-import java.awt.Insets;
-import javax.swing.JTextField;
+
+import data.users.UserFactory;
+
 import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CreateAccount extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtName;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtSurname;
+	private JTextField txtAddress;
+	private JTextField txtPassword;
 
 	/**
 	 * Launch the application.
@@ -44,47 +47,61 @@ public class CreateAccount extends JFrame {
 	 */
 	public CreateAccount() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 327);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblNewLabel = new JLabel("Name");
+		lblNewLabel.setBounds(185, 11, 46, 14);
+		contentPane.add(lblNewLabel);
+		
 		txtName = new JTextField();
-		txtName.setBounds(157, 22, 112, 20);
+		txtName.setBounds(153, 32, 109, 20);
 		contentPane.add(txtName);
 		txtName.setColumns(10);
 		
-		JLabel lblName = new JLabel("Name");
-		lblName.setBounds(192, 11, 46, 14);
-		contentPane.add(lblName);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(157, 67, 112, 20);
-		contentPane.add(textField);
+		txtSurname = new JTextField();
+		txtSurname.setColumns(10);
+		txtSurname.setBounds(153, 85, 109, 20);
+		contentPane.add(txtSurname);
 		
 		JLabel lblSurname = new JLabel("Surname");
-		lblSurname.setBounds(192, 53, 46, 14);
+		lblSurname.setBounds(185, 64, 46, 14);
 		contentPane.add(lblSurname);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(157, 112, 112, 20);
-		contentPane.add(textField_1);
+		txtAddress = new JTextField();
+		txtAddress.setColumns(10);
+		txtAddress.setBounds(153, 137, 109, 20);
+		contentPane.add(txtAddress);
 		
 		JLabel lblAddress = new JLabel("Address");
-		lblAddress.setBounds(192, 98, 46, 14);
+		lblAddress.setBounds(185, 116, 46, 14);
 		contentPane.add(lblAddress);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Doctor", "Secretary"}));
 		comboBox.setSelectedIndex(0);
-		comboBox.setBounds(157, 155, 112, 20);
+		comboBox.setBounds(153, 168, 109, 20);
 		contentPane.add(comboBox);
 		
+		txtPassword = new JTextField();
+		txtPassword.setColumns(10);
+		txtPassword.setBounds(153, 220, 109, 20);
+		contentPane.add(txtPassword);
+		
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(185, 199, 46, 14);
+		contentPane.add(lblPassword);
+		
 		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.setBounds(157, 198, 112, 23);
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				UserFactory.CreateUser(comboBox.getSelectedItem().toString(), txtName.getText(), txtSurname.getText(), txtAddress.getText(), txtPassword.getText());;
+			}
+		});
+		btnSubmit.setBounds(163, 251, 89, 23);
 		contentPane.add(btnSubmit);
 	}
 }

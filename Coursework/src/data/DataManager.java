@@ -15,6 +15,11 @@ public class DataManager {
 	
 	public static void LoadData() {
 		RequestedAccounts = JSon.getRequestAccounts();
+		Patients = JSon.getPatients();
+		Doctors = JSon.getDoctors();
+		Secretarys = JSon.getSecretarys();
+		Admins = JSon.getAdmins();
+		
 	}
 	
 	public static void AddAccountRequest(AccountRequest ar) {

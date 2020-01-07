@@ -1,11 +1,13 @@
 package data;
 
-import java.lang.reflect.Type;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -48,7 +50,12 @@ public class JSon {
 			JsonReader jr = new JsonReader(new FileReader("RequestAccount.json"));
 			 request = gson.fromJson(jr, ACCOUNTREQUEST_TYPE);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			File file = new File("RequestAccount.json");
+			try {
+				file.createNewFile();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 		
 		return request;
@@ -82,7 +89,12 @@ public class JSon {
 			JsonReader jr = new JsonReader(new FileReader("Patients.json"));
 			 request = gson.fromJson(jr, PATIENT_TYPE);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			File file = new File("Patients.json");
+			try {
+				file.createNewFile();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 		
 		return request;
@@ -92,12 +104,12 @@ public class JSon {
 		GsonBuilder gb = new GsonBuilder();
 		gb.serializeNulls();
 		gb.setPrettyPrinting();
-		Gson RequestAccount = gb.create();
+		Gson Doctors = gb.create();
 		FileWriter fw;
 		try {
 			fw = new FileWriter("Doctors.json");
 			
-			RequestAccount.toJson(ar, fw);
+			Doctors.toJson(ar, fw);
 			
 			fw.flush();
 			fw.close();
@@ -116,7 +128,12 @@ public class JSon {
 			JsonReader jr = new JsonReader(new FileReader("Doctors.json"));
 			 request = gson.fromJson(jr, Doctor_TYPE);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			File file = new File("Doctors.json");
+			try {
+				file.createNewFile();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 		
 		return request;
@@ -149,7 +166,12 @@ public class JSon {
 			JsonReader jr = new JsonReader(new FileReader("Secretarys.json"));
 			 request = gson.fromJson(jr, Secretary_TYPE);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			File file = new File("Secretarys.json");
+			try {
+				file.createNewFile();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 		
 		return request;
@@ -159,12 +181,12 @@ public class JSon {
 		GsonBuilder gb = new GsonBuilder();
 		gb.serializeNulls();
 		gb.setPrettyPrinting();
-		Gson RequestAccount = gb.create();
+		Gson Admins = gb.create();
 		FileWriter fw;
 		try {
 			fw = new FileWriter("Admins.json");
 			
-			RequestAccount.toJson(ar, fw);
+			Admins.toJson(ar, fw);
 			
 			fw.flush();
 			fw.close();
@@ -183,7 +205,12 @@ public class JSon {
 			JsonReader jr = new JsonReader(new FileReader("Admins.json"));
 			 request = gson.fromJson(jr, Admin_TYPE);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			File file = new File("Admins.json");
+			try {
+				file.createNewFile();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 		
 		return request;

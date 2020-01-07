@@ -1,20 +1,28 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import data.DataManager;
+import data.users.Admin;
+import data.users.Doctor;
+import data.users.Patient;
+import data.users.Secretary;
 
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtID;
+	private JTextField txtPassword;
 	private JLabel lblPassword;
 	private JButton btnLogin;
 
@@ -45,25 +53,71 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(102, 76, 215, 31);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtID = new JTextField();
+		txtID.setBounds(102, 76, 215, 31);
+		contentPane.add(txtID);
+		txtID.setColumns(10);
 		
 		JLabel lblName = new JLabel("ID");
 		lblName.setBounds(202, 58, 11, 14);
 		contentPane.add(lblName);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(102, 135, 215, 31);
-		contentPane.add(textField_1);
+		txtPassword = new JTextField();
+		txtPassword.setColumns(10);
+		txtPassword.setBounds(102, 135, 215, 31);
+		contentPane.add(txtPassword);
 		
 		lblPassword = new JLabel("Password");
 		lblPassword.setBounds(186, 118, 46, 14);
 		contentPane.add(lblPassword);
 		
 		btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				char role = Character.toUpperCase(txtID.getText().charAt(0));
+				switch (role) {
+				case 'P':
+					ArrayList<Patient> patients = DataManager.GetPatients();
+					for (Patient p : patients) {
+						if (txtID.getText() == p.getID() && txtPassword.getText() == p.getPassword()) {
+							Main.OpenPatient(p);
+							dispose();
+							
+						}
+					}
+					break;
+				case 'D' : 
+					ArrayList<Doctor> drs= DataManager.GetDoctors();
+					for (Doctor d : drs) {
+						if (txtID.getText() == d.getID() && txtPassword.getText() == d.getPassword()) {
+							Main.OpenDoctor(d);
+							dispose();
+						}
+					}
+					break;
+				case 'S':
+					ArrayList<Secretary> secs= DataManager.GetSecretarys();
+					for (Secretary s : secs) {
+						if (txtID.getText() == s.getID() && txtPassword.getText() == s.getPassword()) {
+							Main.OpenSecretary(s);
+							dispose();
+						}
+					}
+					break;
+				case 'A':
+					ArrayList<Admin> admins= DataManager.GetAdmins();
+					for (Admin a : admins) {
+						if (txtID.getText() == a.getID() && txtPassword.getText() == a.getPassword()) {
+							Main.OpenAdmin(a);
+							dispose();
+						}
+					}
+					break;
+				default: 
+					break;
+				}
+			}
+		});
 		btnLogin.setBounds(167, 177, 89, 23);
 		contentPane.add(btnLogin);
 	}

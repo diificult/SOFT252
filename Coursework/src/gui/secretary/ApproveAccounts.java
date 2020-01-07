@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import data.AccountRequest;
 import data.DataManager;
 import data.JSon;
+import data.users.UserFactory;
 
 public class ApproveAccounts extends JFrame {
 
@@ -77,6 +78,9 @@ public class ApproveAccounts extends JFrame {
 		JButton btnApprove = new JButton("Approve");
 		btnApprove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				AccountRequest r = ar.get(lstAccounts.getSelectedIndex());
+				UserFactory.CreateUser(r.GetName(), r.GetSurname(),r.GetAddress(),r.GetAge(),r.GetGender(),r.GetPassword());
+				lstAccounts.remove(lstAccounts.getSelectedIndex());
 			}
 		});
 		GridBagConstraints gbc_btnApprove = new GridBagConstraints();
