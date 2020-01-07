@@ -1,17 +1,16 @@
 package data; 
 import data.JSon;
-import data.users.Patient;
+import data.users.*;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import com.google.gson.stream.JsonReader;
 
 public class DataManager {
 	
 	private static ArrayList<AccountRequest> RequestedAccounts = new ArrayList<AccountRequest>();
-	private static ArrayList<Patient> Patients = new ArrayList<Patient>();
+	private static ArrayList<Patient> Patients = new ArrayList<	Patient>();
+	private static ArrayList<Doctor> Doctors = new ArrayList<Doctor>();
+	private static ArrayList<Secretary> Secretarys = new ArrayList<Secretary>();
+	private static ArrayList<Admin> Admins = new ArrayList<Admin>();
 	
 	
 	public static void LoadData() {
@@ -37,5 +36,35 @@ public class DataManager {
 	public static ArrayList<Patient> GetPatients() {
 		return Patients;
 	}
+	
+	public static void AddDoctor(Doctor d) {
+		Doctors.add(d);
+		JSon.storeDoctors(Doctors);
+		
+	}
+	
+	public static ArrayList<Doctor> GetDoctors() {
+		return Doctors;
+	}
 
+	public static void AddSecretary(Secretary s) {
+		Secretarys.add(s);
+		JSon.storeSecretarys(Secretarys);
+		
+	}
+	
+	public static ArrayList<Secretary> GetSecretarys() {
+		return Secretarys;
+	}
+	
+	public static void AddAdmin(Admin a) {
+		Admins.add(a);
+		JSon.storeAdmins(Admins);
+		
+	}
+	
+	public static ArrayList<Admin> GetAdmins() {
+		return Admins;
+	}
+	
 }
