@@ -9,10 +9,12 @@ import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
 import javax.swing.JList;
 import java.awt.GridBagConstraints;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.Insets;
 
-public class DoctorAppointmentList extends JFrame {
+public class Appointments extends JFrame {
 
 	private JPanel contentPane;
 
@@ -23,7 +25,7 @@ public class DoctorAppointmentList extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DoctorAppointmentList frame = new DoctorAppointmentList();
+					Appointments frame = new Appointments();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +37,7 @@ public class DoctorAppointmentList extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DoctorAppointmentList() {
+	public Appointments() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -48,21 +50,22 @@ public class DoctorAppointmentList extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-		JList list = new JList();
-		GridBagConstraints gbc_list = new GridBagConstraints();
-		gbc_list.gridwidth = 2;
-		gbc_list.insets = new Insets(0, 0, 5, 5);
-		gbc_list.fill = GridBagConstraints.BOTH;
-		gbc_list.gridx = 0;
-		gbc_list.gridy = 0;
-		contentPane.add(list, gbc_list);
+		DefaultListModel model = new DefaultListModel();
+		JList lstAppointments = new JList(model);
+		GridBagConstraints gbc_lstAppointments = new GridBagConstraints();
+		gbc_lstAppointments.gridwidth = 2;
+		gbc_lstAppointments.insets = new Insets(0, 0, 5, 5);
+		gbc_lstAppointments.fill = GridBagConstraints.BOTH;
+		gbc_lstAppointments.gridx = 0;
+		gbc_lstAppointments.gridy = 0;
+		contentPane.add(lstAppointments, gbc_lstAppointments);
 		
-		JButton btnNewButton = new JButton("Select Appointment");
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton.gridx = 0;
-		gbc_btnNewButton.gridy = 1;
-		contentPane.add(btnNewButton, gbc_btnNewButton);
+		JButton btnStart = new JButton("Start Appointment");
+		GridBagConstraints gbc_btnStart = new GridBagConstraints();
+		gbc_btnStart.insets = new Insets(0, 0, 0, 5);
+		gbc_btnStart.gridx = 0;
+		gbc_btnStart.gridy = 1;
+		contentPane.add(btnStart, gbc_btnStart);
 		
 		JButton btnNewButton_1 = new JButton("Back");
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();

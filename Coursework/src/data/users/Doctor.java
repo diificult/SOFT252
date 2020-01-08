@@ -3,6 +3,7 @@ package data.users;
 import java.util.ArrayList;
 
 import data.Appointment;
+import data.Observable;
 import data.Observer;
 
 public class Doctor implements iUser, Observer {
@@ -12,6 +13,7 @@ public class Doctor implements iUser, Observer {
 	private String id;
 	private String address;
 	private String password;
+	private ArrayList<Appointment> AppointmentNotification = new ArrayList<Appointment>();
 	
 	public Doctor(String name, String surname, String id, String address, String password) {
 		this.name= name;
@@ -46,10 +48,20 @@ public class Doctor implements iUser, Observer {
 		return password;
 	}
 
+	public void RemoveNotifications() {
+		AppointmentNotification = new ArrayList<Appointment>();
+	}
+	
+	
+	public ArrayList<Appointment> getNotification() {
+		return AppointmentNotification;
+	}
+	
 	@Override
-	public void update(ArrayList<Appointment> a) {
-		// TODO Auto-generated method stub
-		
+	public void update(ArrayList<Appointment> a, Observable o) {
+		if (AppointmentNotification == null ) AppointmentNotification = new ArrayList<Appointment>();
+		AppointmentNotification.addAll(a);
+		o.removeObserver(this);
 	}
 
 	

@@ -1,38 +1,25 @@
 package gui.doctor;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
-import javax.swing.JButton;
+
+import data.Appointment;
+import data.DataManager;
+import data.users.Doctor;
+import data.users.Patient;
 
 public class DoctorScreen extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					DoctorScreen frame = new DoctorScreen();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public DoctorScreen() {
+	public DoctorScreen(Doctor d) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 190);
 		contentPane = new JPanel();
@@ -45,6 +32,19 @@ public class DoctorScreen extends JFrame {
 		
 		JButton btnRequest = new JButton("Request Medicine");
 		contentPane.add(btnRequest);
+		ArrayList<Appointment> appointmentNotificaiton = d.getNotification();
+		if (appointmentNotificaiton != null) {
+			String message = "The following appointments have been approved: \n ";
+
+			for (Appointment notifi : appointmentNotificaiton) {
+				Patient p = DataManager.GetPatient(notifi.GetPatientID());
+				message += notifi.GetDate() + " with " + d.getName() + " " + d.getSurname() + " \n";
+
+			}
+			JOptionPane.showMessageDialog(contentPane, message, "Notification", JOptionPane.PLAIN_MESSAGE);
+			d.RemoveNotifications();
+			DataManager.UpdateDoctor();
+		}
 	}
 
 }

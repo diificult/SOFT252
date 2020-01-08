@@ -70,12 +70,14 @@ public class AppointmentApproval extends JFrame {
 		contentPane.add(lstRequest, gbc_lstRequest);
 		ArrayList<RequestedAppointment> ra = DataManager.GetRequestedAppointments();
 		int i = 0;
-		for (RequestedAppointment r : ra) {
-			Doctor d = DataManager.GetDoctor(r.GetDoctorID());
-			Patient p = DataManager.GetPatient(r.GetPatientID());
-			model.add(i, d.getID() + " " + d.getName() + " " + d.getSurname() + " seeing " + p.getID() + " "
-					+ p.getName() + " " + p.getSurname() + " at " + r.GetDate());
-			i++;
+		if (ra != null) {
+			for (RequestedAppointment r : ra) {
+				Doctor d = DataManager.GetDoctor(r.GetDoctorID());
+				Patient p = DataManager.GetPatient(r.GetPatientID());
+				model.add(i, d.getID() + " " + d.getName() + " " + d.getSurname() + " seeing " + p.getID() + " "
+						+ p.getName() + " " + p.getSurname() + " at " + r.GetDate());
+				i++;
+			}
 		}
 
 		DefaultListModel futureModel = new DefaultListModel();
@@ -89,12 +91,14 @@ public class AppointmentApproval extends JFrame {
 		contentPane.add(lstFuture, gbc_lstFuture);
 		ArrayList<Appointment> apps = DataManager.GetAppointments();
 		i = 0;
-		for (Appointment a : apps) {
-			Doctor d = DataManager.GetDoctor(a.GetDoctorID());
-			Patient p = DataManager.GetPatient(a.GetPatientID());
-			futureModel.add(i, d.getID() + " " + d.getName() + " " + d.getSurname() + " seeing " + p.getID() + " "
-					+ p.getName() + " " + p.getSurname() + " at " + a.GetDate().toString());
-			i++;
+		if (apps != null) {
+			for (Appointment a : apps) {
+				Doctor d = DataManager.GetDoctor(a.GetDoctorID());
+				Patient p = DataManager.GetPatient(a.GetPatientID());
+				futureModel.add(i, d.getID() + " " + d.getName() + " " + d.getSurname() + " seeing " + p.getID() + " "
+						+ p.getName() + " " + p.getSurname() + " at " + a.GetDate().toString());
+				i++;
+			}
 		}
 
 		JButton btnApprove = new JButton("Approve with this doctor");
@@ -109,6 +113,11 @@ public class AppointmentApproval extends JFrame {
 				Appointment a = new Appointment(r.GetDoctorID(), r.GetPatientID(), r.GetDate());
 				Doctor d = DataManager.GetDoctor(r.GetDoctorID());
 				Patient p = DataManager.GetPatient(r.GetPatientID());
+				AppointmentNotification notification = new AppointmentNotification();
+				notification.registerObserver(p);
+				notification.registerObserver(d);
+				notification.addAppointment(a);
+				DataManager.UpdatePatients();
 				DataManager.AddAppointment(a);
 				DataManager.RemoveAppointmentRequest(r);
 				ra.remove(r);
@@ -146,17 +155,19 @@ public class AppointmentApproval extends JFrame {
 				Doctor d = drs.get(cboDoctor.getSelectedIndex());
 				Patient p = DataManager.GetPatient(r.GetPatientID());
 				Appointment a = new Appointment(d.getID(), r.GetPatientID(), r.GetDate());
-				AppointmentNotification notification =  new AppointmentNotification();
+				AppointmentNotification notification = new AppointmentNotification();
 				notification.registerObserver(p);
 				notification.registerObserver(d);
 				notification.addAppointment(a);
 				DataManager.AddAppointment(a);
 				DataManager.RemoveAppointmentRequest(r);
+				DataManager.UpdatePatients();
+				DataManager.UpdateDoctor();
 				ra.remove(r);
 				futureModel.add(futureModel.getSize(), d.getID() + " " + d.getName() + " " + d.getSurname() + " seeing "
 						+ p.getID() + " " + p.getName() + " " + p.getSurname() + " at " + r.GetDate());
 				model.remove(lstRequest.getSelectedIndex());
-				
+
 			}
 		});
 

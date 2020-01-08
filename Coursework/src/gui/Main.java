@@ -32,7 +32,7 @@ public class Main {
 	}
 
 	public static void OpenPatient(Patient p) {
-		PatientScreen ps = new PatientScreen();
+		PatientScreen ps = new PatientScreen(p);
 		ps.setVisible(true);
 		Account =p;
 	}
@@ -50,7 +50,7 @@ public class Main {
 	}
 	
 	public static void OpenDoctor(Doctor d) {
-		DoctorScreen ds = new DoctorScreen();
+		DoctorScreen ds = new DoctorScreen(d);
 		ds.setVisible(true);
 		Account = d;
 	}

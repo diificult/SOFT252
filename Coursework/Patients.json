@@ -6,7 +6,8 @@
     "address": "67  STEVE AV",
     "age": 47,
     "gender": "f",
-    "password": "the"
+    "password": "the",
+    "AppointmentNotification": []
   },
   {
     "name": "Jeff",
@@ -15,6 +16,7 @@
     "address": "69 road",
     "age": 65,
     "gender": "f",
-    "password": "1234"
+    "password": "1234",
+    "AppointmentNotification": null
   }
 ]

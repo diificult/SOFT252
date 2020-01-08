@@ -64,8 +64,17 @@ public class DataManager {
 		JSon.storePatients(Patients);
 	}
 	
+	public static void UpdatePatients() {
+		JSon.storePatients(Patients);
+	}
+	
+	
 	public static void AddDoctor(Doctor d) {
 		Doctors.add(d);
+		JSon.storeDoctors(Doctors);
+		
+	}
+	public static void UpdateDoctor() {
 		JSon.storeDoctors(Doctors);
 		
 	}

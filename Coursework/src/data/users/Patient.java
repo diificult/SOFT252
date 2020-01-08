@@ -50,9 +50,18 @@ public class Patient implements iUser, Observer{
 	public String getPassword() {
 		return password;
 	}
+	
+	public ArrayList<Appointment> getNotification() {
+		return AppointmentNotification;
+	}
+	
+	public void RemoveNotifications() {
+		AppointmentNotification = new ArrayList<Appointment>();
+	}
 
 	@Override
 	public void update(ArrayList<Appointment> a, Observable o) {
+		if (AppointmentNotification == null ) AppointmentNotification = new ArrayList<Appointment>();
 		AppointmentNotification.addAll(a);
 		o.removeObserver(this);
 		

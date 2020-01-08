@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class AppointmentNotification implements Observable {
 
 	private ArrayList<Appointment> appointments = new ArrayList<Appointment>();
-	private ArrayList<Observer> observers;
+	private ArrayList<Observer> observers = new ArrayList<Observer>();
 	
 	public  AppointmentNotification() {
 		
@@ -13,6 +13,7 @@ public class AppointmentNotification implements Observable {
 	
 	public void addAppointment(Appointment a) {
 		appointments.add(a);
+		notifyObserver();
 	}
 	
 	@Override
