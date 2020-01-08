@@ -1,6 +1,8 @@
 package gui.doctor;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -29,6 +31,13 @@ public class DoctorScreen extends JFrame {
 		
 		JButton btnAppointments = new JButton("Appointments");
 		contentPane.add(btnAppointments);
+		btnAppointments.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Appointments a = new Appointments();
+				a.setVisible(true);
+				dispose();
+			}
+			});
 		
 		JButton btnRequest = new JButton("Request Medicine");
 		contentPane.add(btnRequest);

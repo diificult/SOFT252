@@ -34,6 +34,16 @@ public class PatientScreen extends JFrame {
 		JButton btnNewButton = new JButton("View History");
 		contentPane.add(btnNewButton);
 
+		JButton btnUpcoming = new JButton("View Upcoming Appointments");
+		contentPane.add(btnUpcoming);
+		btnUpcoming.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PatientAppointmentList pal = new PatientAppointmentList();
+				pal.setVisible(true);
+				dispose();
+			}
+		});
+
 		JButton btnCreate = new JButton("Create Appointment");
 		contentPane.add(btnCreate);
 		btnCreate.addActionListener(new ActionListener() {

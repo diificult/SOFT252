@@ -6,11 +6,21 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import data.Appointment;
+import data.DataManager;
+import data.users.Doctor;
+import data.users.Patient;
+import gui.Main;
+
 import java.awt.GridBagLayout;
 import javax.swing.JList;
 import java.awt.GridBagConstraints;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.Insets;
+import java.util.ArrayList;
 
 public class PatientAppointmentList extends JFrame {
 
@@ -48,6 +58,7 @@ public class PatientAppointmentList extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
+		DefaultListModel model = new DefaultListModel();
 		JList list = new JList();
 		GridBagConstraints gbc_list = new GridBagConstraints();
 		gbc_list.insets = new Insets(0, 0, 5, 0);
@@ -55,6 +66,18 @@ public class PatientAppointmentList extends JFrame {
 		gbc_list.gridx = 0;
 		gbc_list.gridy = 0;
 		contentPane.add(list, gbc_list);
+		ArrayList<Appointment> apps = DataManager.GetAppointments();
+		Patient account = (Patient)Main.getAccount();
+		int i = 0;
+		for (Appointment a : apps) {
+			
+			if (a.GetDoctorID().equals(account.getID())) {
+				Doctor d = DataManager.GetDoctor(a.GetDoctorID());
+				model.add(i, a.GetDate() + " with " + d.getName() + " " + d.getSurname());
+				i++;
+			}
+		}
+		
 	
 		
 		JButton btnNewButton = new JButton("Back");

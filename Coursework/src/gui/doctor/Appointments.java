@@ -1,18 +1,23 @@
 package gui.doctor;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
-import javax.swing.JList;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import java.awt.Insets;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import data.Appointment;
+import data.DataManager;
+import data.users.Doctor;
+import data.users.Patient;
+import gui.Main;
 
 public class Appointments extends JFrame {
 
@@ -59,6 +64,17 @@ public class Appointments extends JFrame {
 		gbc_lstAppointments.gridx = 0;
 		gbc_lstAppointments.gridy = 0;
 		contentPane.add(lstAppointments, gbc_lstAppointments);
+		ArrayList<Appointment> apps = DataManager.GetAppointments();
+		Doctor account = (Doctor)Main.getAccount();
+		int i = 0;
+		for (Appointment a : apps) {
+			
+			if (a.GetDoctorID().equals(account.getID())) {
+				Patient p = DataManager.GetPatient(a.GetPatientID());
+				model.add(i, a.GetDate() + " with " + p.getName() + " " + p.getSurname());
+				i++;
+			}
+		}
 		
 		JButton btnStart = new JButton("Start Appointment");
 		GridBagConstraints gbc_btnStart = new GridBagConstraints();
@@ -71,7 +87,7 @@ public class Appointments extends JFrame {
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.gridx = 1;
 		gbc_btnNewButton_1.gridy = 1;
-		contentPane.add(btnNewButton_1, gbc_btnNewButton_1);
+		contentPane.add(btnNewButton_1, gbc_btnNewButton_1);	
 	}
 
 }
