@@ -7,4 +7,8 @@ public class Medicine {
 		public void Medicine(String name) {
 			this.name  = name;
 		}
+	
+		private String GetName() {
+			return name;
+		}
 }

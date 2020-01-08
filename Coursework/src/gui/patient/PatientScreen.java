@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class PatientScreen extends JFrame {
@@ -43,10 +46,17 @@ public class PatientScreen extends JFrame {
 		JButton btnNewButton = new JButton("View History");
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Create Appointment");
-		contentPane.add(btnNewButton_1);
+		JButton btnCreate = new JButton("Create Appointment");
+		contentPane.add(btnCreate);
+		btnCreate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CreateAppointment ca = new CreateAppointment();
+				ca.setVisible(true);
+				dispose();
+			}
+			});
 		
-		JButton btnNewButton_2 = new JButton("RequestAppointment");
+		JButton btnNewButton_2 = new JButton("Request Appointment");
 		contentPane.add(btnNewButton_2);
 	}
 

@@ -7,7 +7,7 @@ public class RequestedAppointment {
 	private String PatientID;
 	private Date PotentialDates;
 	
-	public void RequestedAppointment(String DoctorID,   String PatientID,  Date PotentialDates) {
+	public RequestedAppointment(String DoctorID,   String PatientID,  Date PotentialDates) {
 		this.DoctorID = DoctorID;
 		this.PatientID = PatientID;
 		this.PotentialDates = PotentialDates;

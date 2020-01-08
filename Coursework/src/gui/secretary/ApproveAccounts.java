@@ -25,23 +25,6 @@ import data.users.UserFactory;
 public class ApproveAccounts extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ApproveAccounts frame = new ApproveAccounts();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the frame.
 	 */
@@ -80,7 +63,8 @@ public class ApproveAccounts extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AccountRequest r = ar.get(lstAccounts.getSelectedIndex());
 				UserFactory.CreateUser(r.GetName(), r.GetSurname(),r.GetAddress(),r.GetAge(),r.GetGender(),r.GetPassword());
-				lstAccounts.remove(lstAccounts.getSelectedIndex());
+				DataManager.RemoveAccountRequest(r);
+				model.remove(lstAccounts.getSelectedIndex());
 			}
 		});
 		GridBagConstraints gbc_btnApprove = new GridBagConstraints();

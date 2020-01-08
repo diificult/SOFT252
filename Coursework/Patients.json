@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Jeff",
+    "surname": "How",
+    "id": "P0000",
+    "address": "69 road",
+    "age": 65,
+    "gender": "f",
+    "password": "1234"
+  },
+  {
+    "name": "Smol",
+    "surname": "Boui",
+    "id": "P0001",
+    "address": "67  STEVE AV",
+    "age": 47,
+    "gender": "f",
+    "password": "the"
+  },
+  {
+    "name": "Big",
+    "surname": "Boi",
+    "id": "P0002",
+    "address": "69  STEVE AV",
+    "age": 5,
+    "gender": "m",
+    "password": "password"
+  },
+  {
+    "name": "Big",
+    "surname": "Boi",
+    "id": "P0003",
+    "address": "69  STEVE AV",
+    "age": 5,
+    "gender": "m",
+    "password": "password"
+  },
+  {
+    "name": "Big",
+    "surname": "Boi",
+    "id": "P0004",
+    "address": "69  STEVE AV",
+    "age": 5,
+    "gender": "m",
+    "password": "password"
+  },
+  {
+    "name": "Jeff",
+    "surname": "How",
+    "id": "P0005",
+    "address": "69 road",
+    "age": 65,
+    "gender": "f",
+    "password": "1234"
+  },
+  {
+    "name": "Smol",
+    "surname": "Boui",
+    "id": "P0006",
+    "address": "67  STEVE AV",
+    "age": 47,
+    "gender": "f",
+    "password": "the"
+  },
+  {
+    "name": "Big",
+    "surname": "Boi",
+    "id": "P0007",
+    "address": "69  STEVE AV",
+    "age": 5,
+    "gender": "m",
+    "password": "password"
+  }
+]

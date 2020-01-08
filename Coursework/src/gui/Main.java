@@ -55,4 +55,7 @@ public class Main {
 		Account = d;
 	}
 	
+	public static Object getAccount() {
+		return Account;
+	}
 }

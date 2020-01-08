@@ -215,4 +215,41 @@ public class JSon {
 		return request;
 	}
 	
+	public static void storeRequestApp(ArrayList<RequestedAppointment> ra) {
+		GsonBuilder gb = new GsonBuilder();
+		gb.serializeNulls();
+		gb.setPrettyPrinting();
+		Gson Admins = gb.create();
+		FileWriter fw;
+		try {
+			fw = new FileWriter("RequestedAppointments.json");
+			Admins.toJson(ra, fw);
+			fw.flush();
+			fw.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}	
+	}
+	
+	private static final Type REQUESTEDAPPOINTMENT_TYPE = new TypeToken<ArrayList<RequestedAppointment>>() {
+	}.getType();
+	
+	public static ArrayList<RequestedAppointment> getRequestedAppointments() {
+		Gson gson = new Gson();
+		ArrayList<RequestedAppointment> request = new ArrayList<RequestedAppointment>();
+		try {
+			JsonReader jr = new JsonReader(new FileReader("RequestedAppointments.json"));
+			 request = gson.fromJson(jr, REQUESTEDAPPOINTMENT_TYPE);
+		} catch (FileNotFoundException e) {
+			File file = new File("RequestedAppointments.json");
+			try {
+				file.createNewFile();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		return request;
+	}
+	
 }

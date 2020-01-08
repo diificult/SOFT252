@@ -7,27 +7,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class SectetaryScreen extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SectetaryScreen frame = new SectetaryScreen();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -40,8 +28,15 @@ public class SectetaryScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JButton btnNewButton = new JButton("Approve Accounts & Deactivation");
-		contentPane.add(btnNewButton);
+		JButton btnApprove = new JButton("Approve Accounts & Deactivation");
+		contentPane.add(btnApprove);
+		btnApprove.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ApproveAccounts aa = new ApproveAccounts();
+				aa.setVisible(true);
+				dispose();
+			}
+			});
 		
 		JButton btnNewButton_1 = new JButton("Appointment Requests");
 		contentPane.add(btnNewButton_1);

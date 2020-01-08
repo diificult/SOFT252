@@ -11,21 +11,27 @@ public class DataManager {
 	private static ArrayList<Doctor> Doctors = new ArrayList<Doctor>();
 	private static ArrayList<Secretary> Secretarys = new ArrayList<Secretary>();
 	private static ArrayList<Admin> Admins = new ArrayList<Admin>();
+	private static ArrayList<RequestedAppointment> RequestedAppointments = new ArrayList<RequestedAppointment>();
 	
 	
 	public static void LoadData() {
 		RequestedAccounts = JSon.getRequestAccounts();
-		System.out.println(RequestedAccounts.size());
 		Patients = JSon.getPatients();
 		Doctors = JSon.getDoctors();
 		Secretarys = JSon.getSecretarys();
 		Admins = JSon.getAdmins();
-		System.out.println(Admins.size());
+		RequestedAppointments = JSon.getRequestedAppointments();
+		
 		
 	}
 	
 	public static void AddAccountRequest(AccountRequest ar) {
 		RequestedAccounts.add(ar);
+		JSon.storeRequestAccount(RequestedAccounts);
+		
+	}
+	public static void RemoveAccountRequest(AccountRequest ar) {
+		RequestedAccounts.remove(ar);
 		JSon.storeRequestAccount(RequestedAccounts);
 		
 	}
@@ -35,6 +41,7 @@ public class DataManager {
 	}
 	
 	public static void AddPatient(Patient p) {
+		if (Patients == null) Patients = new ArrayList<Patient>();
 		Patients.add(p);
 		JSon.storePatients(Patients);
 		
@@ -60,6 +67,7 @@ public class DataManager {
 	}
 
 	public static void AddSecretary(Secretary s) {
+		if (Secretarys == null) Secretarys = new ArrayList<Secretary>();
 		Secretarys.add(s);
 		JSon.storeSecretarys(Secretarys);
 		
@@ -77,6 +85,17 @@ public class DataManager {
 	
 	public static ArrayList<Admin> GetAdmins() {
  		return Admins;
+	}
+	
+	public static void AddRequestedAppointment(RequestedAppointment ra) {
+		if (RequestedAppointments == null ) RequestedAppointments = new ArrayList<RequestedAppointment>();
+		RequestedAppointments.add(ra);
+		JSon.storeRequestApp(RequestedAppointments);
+		
+	}
+	
+	public static ArrayList<RequestedAppointment> GetRequestedAppointments() {
+ 		return RequestedAppointments;
 	}
 	
 	

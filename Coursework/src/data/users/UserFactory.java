@@ -12,7 +12,7 @@ public class UserFactory implements iUserFactory {
 		case "Doctor" :
 			ArrayList<Doctor>drs = DataManager.GetDoctors();
 			if (drs == null) id = "D0000";
-			else id = "D" + String.format("%04d",Integer.parseInt(drs.get(drs.size()-1).getID().substring(1, 5)+1));
+			else id = "D" + String.format("%04d",Integer.parseInt(drs.get(drs.size()-1).getID().substring(1, 5))+1);
 			Doctor d = new Doctor(name,  surname, id,address, password);
 			DataManager.AddDoctor(d);
 			break;
@@ -41,7 +41,7 @@ public class UserFactory implements iUserFactory {
 		ArrayList<Patient> ps = DataManager.GetPatients();
 		String  id;
 		if (ps == null) id  = "P0000";
-		else id = String.format("%04d",Integer.parseInt(ps.get(ps.size()).getID().substring(1, 5))+1);
+		else id ="P" + String.format("%04d",Integer.parseInt(ps.get(ps.size()-1).getID().substring(1, 5))+1);
 		Patient p = new Patient(name, surname,  id,address,  age, gender,password);
 		DataManager.AddPatient(p);
 		

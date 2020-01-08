@@ -96,9 +96,7 @@ public class RemoveAccount extends JFrame {
 		contentPane.add(btnRemove, gbc_btnRemove);
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.print("yikes");
 				String id = model.get(listAccounts.getSelectedIndex()).toString().substring(0, 5);
-				System.out.print(id);
 				for (Doctor d : drs) {
 					if (d.getID().equals(id)) {
 						model.remove(listAccounts.getSelectedIndex());
