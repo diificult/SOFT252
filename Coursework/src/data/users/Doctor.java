@@ -2,11 +2,11 @@ package data.users;
 
 public class Doctor implements iUser {
 
-	private static String name;
-	private static String surname;
-	private static String id;
-	private static String address;
-	private static String password;
+	private String name;
+	private String surname;
+	private String id;
+	private String address;
+	private String password;
 	
 	public Doctor(String name, String surname, String id, String address, String password) {
 		this.name= name;

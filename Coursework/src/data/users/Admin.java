@@ -2,11 +2,11 @@ package data.users;
 
 public class Admin implements iUser {
 
-	private static String name;
-	private static String surname;
-	private static String id;
-	private static String address;
-	private static String password;
+	private String name;
+	private String surname;
+	private String id;
+	private String address;
+	private String password;
 	
 	public Admin(String name, String surname, String id, String address, String password) {
 		this.name= name;
@@ -16,27 +16,23 @@ public class Admin implements iUser {
 		this.password= password;
 	}
 	
-	@Override
+	
 	public String getName() {
 		return name;
 	}
 
-	@Override
 	public String getID() {
 		return id;
 	}
 
-	@Override
 	public String getSurname() {
 		return surname;
 	}
 
-	@Override
 	public String getAddress() {
 		return address;
 	}
 
-	@Override
 	public String getPassword() {
 		return password;
 	}

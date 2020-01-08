@@ -15,10 +15,12 @@ public class DataManager {
 	
 	public static void LoadData() {
 		RequestedAccounts = JSon.getRequestAccounts();
+		System.out.println(RequestedAccounts.size());
 		Patients = JSon.getPatients();
 		Doctors = JSon.getDoctors();
 		Secretarys = JSon.getSecretarys();
 		Admins = JSon.getAdmins();
+		System.out.println(Admins.size());
 		
 	}
 	
@@ -51,6 +53,11 @@ public class DataManager {
 	public static ArrayList<Doctor> GetDoctors() {
 		return Doctors;
 	}
+	
+	public static void RemoveDoctor(Doctor d) {
+		Doctors.remove(d);
+		JSon.storeDoctors(Doctors);
+	}
 
 	public static void AddSecretary(Secretary s) {
 		Secretarys.add(s);
@@ -69,7 +76,9 @@ public class DataManager {
 	}
 	
 	public static ArrayList<Admin> GetAdmins() {
-		return Admins;
+ 		return Admins;
 	}
+	
+	
 	
 }

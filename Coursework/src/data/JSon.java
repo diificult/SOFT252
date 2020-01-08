@@ -65,12 +65,12 @@ public class JSon {
 		GsonBuilder gb = new GsonBuilder();
 		gb.serializeNulls();
 		gb.setPrettyPrinting();
-		Gson RequestAccount = gb.create();
+		Gson Patient = gb.create();
 		FileWriter fw;
 		try {
 			fw = new FileWriter("Patients.json");
 			
-			RequestAccount.toJson(ar, fw);
+			Patient.toJson(ar, fw);
 			
 			fw.flush();
 			fw.close();
@@ -183,11 +183,10 @@ public class JSon {
 		gb.setPrettyPrinting();
 		Gson Admins = gb.create();
 		FileWriter fw;
+		System.out.println(ar.get(0).getID());
 		try {
 			fw = new FileWriter("Admins.json");
-			
 			Admins.toJson(ar, fw);
-			
 			fw.flush();
 			fw.close();
 		} catch (IOException e1) {
@@ -195,7 +194,7 @@ public class JSon {
 		}	
 	}
 	
-	private static final Type Admin_TYPE = new TypeToken<ArrayList<Admin>>() {
+	private static final Type ADMIN_TYPE = new TypeToken<ArrayList<Admin>>() {
 	}.getType();
 	
 	public static ArrayList<Admin> getAdmins() {
@@ -203,7 +202,7 @@ public class JSon {
 		ArrayList<Admin> request = new ArrayList<Admin>();
 		try {
 			JsonReader jr = new JsonReader(new FileReader("Admins.json"));
-			 request = gson.fromJson(jr, Admin_TYPE);
+			 request = gson.fromJson(jr, ADMIN_TYPE);
 		} catch (FileNotFoundException e) {
 			File file = new File("Admins.json");
 			try {

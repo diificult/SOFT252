@@ -9,12 +9,12 @@ public class AccountRequest {
 		private String RequestedPassword;
 		
 		public AccountRequest(String name, String surname, String address, int age, char gender, String password) {
-			RequestedName = name;
-			RequestedSurname = surname;
-			RequestedAddress  = address;
-			RequestedAge = age;
-			RequestedGender = gender;
-			RequestedPassword = password;
+			this.RequestedName = name;
+			this.RequestedSurname = surname;
+			this.RequestedAddress  = address;
+			this.RequestedAge = age;
+			this.RequestedGender = gender;
+			this.RequestedPassword = password;
 		}
 		
 		public String GetName() {

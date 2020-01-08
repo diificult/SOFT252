@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.GridLayout;
 
 public class AdminScreen extends JFrame {
@@ -41,19 +43,30 @@ public class AdminScreen extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(4, 3, 50, 3));
+		contentPane.setLayout(new GridLayout(3, 3, 50, 3));
 		
-		JButton button = new JButton("Remove Account");
-		contentPane.add(button);
+		JButton btnRemove = new JButton("Remove Account");
+		contentPane.add(btnRemove);
+		btnRemove.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RemoveAccount rc = new RemoveAccount();
+				rc.setVisible(true);
+				contentPane.setVisible(false);
+			}
+			});
+		JButton btnCreate = new JButton("Create Account");
+		contentPane.add(btnCreate);
+		btnCreate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CreateAccount ca =  new CreateAccount();
+				ca.setVisible(true);
+				contentPane.setVisible(false);
+			}
+			});
 		
-		JButton btnNewButton = new JButton("Create Account");
-		contentPane.add(btnNewButton);
+		JButton btnFeedback = new JButton("Feedback");
+		contentPane.add(btnFeedback);
 		
-		JButton btnNewButton_1 = new JButton("View Ratings");
-		contentPane.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("Give Rating");
-		contentPane.add(btnNewButton_2);
 	}
 
 }

@@ -79,7 +79,7 @@ public class Login extends JFrame {
 				case 'P':
 					ArrayList<Patient> patients = DataManager.GetPatients();
 					for (Patient p : patients) {
-						if (txtID.getText() == p.getID() && txtPassword.getText() == p.getPassword()) {
+						if (txtID.getText().equalsIgnoreCase(p.getID())  && txtPassword.getText().equalsIgnoreCase(p.getPassword())) {
 							Main.OpenPatient(p);
 							dispose();
 							
@@ -89,7 +89,7 @@ public class Login extends JFrame {
 				case 'D' : 
 					ArrayList<Doctor> drs= DataManager.GetDoctors();
 					for (Doctor d : drs) {
-						if (txtID.getText() == d.getID() && txtPassword.getText() == d.getPassword()) {
+						if (txtID.getText().equalsIgnoreCase(d.getID())  && txtPassword.getText().equalsIgnoreCase(d.getPassword())) {
 							Main.OpenDoctor(d);
 							dispose();
 						}
@@ -98,16 +98,20 @@ public class Login extends JFrame {
 				case 'S':
 					ArrayList<Secretary> secs= DataManager.GetSecretarys();
 					for (Secretary s : secs) {
-						if (txtID.getText() == s.getID() && txtPassword.getText() == s.getPassword()) {
+						if (txtID.getText().equalsIgnoreCase(s.getID())  && txtPassword.getText().equalsIgnoreCase(s.getPassword())) {
 							Main.OpenSecretary(s);
 							dispose();
 						}
 					}
 					break;
 				case 'A':
+					System.out.print(1);
 					ArrayList<Admin> admins= DataManager.GetAdmins();
 					for (Admin a : admins) {
-						if (txtID.getText() == a.getID() && txtPassword.getText() == a.getPassword()) {
+						System.out.print(2);
+						System.out.print(txtID.getText() + " " + txtPassword.getText());
+						if (txtID.getText().equalsIgnoreCase(a.getID())  && txtPassword.getText().equalsIgnoreCase(a.getPassword())) {
+							System.out.print(3);
 							Main.OpenAdmin(a);
 							dispose();
 						}

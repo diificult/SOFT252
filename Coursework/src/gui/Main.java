@@ -19,9 +19,6 @@ public class Main {
 		MainScreen ms = new MainScreen();
 		ms.setVisible(true);
 		DataManager.LoadData();
-		
-		UserFactory.CreateUser("Admin","Main","Account","Here","1234");
-
 	}
 	
 	public static void OpenLogin() {
