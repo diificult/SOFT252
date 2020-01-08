@@ -1,12 +1,7 @@
 [
   {
-    "DoctorID": "D0001",
+    "DoctorID": "D0111",
     "PatientID": "P0000",
-    "PotentialDates": "Feb 1, 3920, 12:52:22 PM"
-  },
-  {
-    "DoctorID": "D0001",
-    "PatientID": "P0000",
-    "PotentialDates": "Feb 1, 3920, 12:00:00 AM"
+    "PotentialDate": "Jul 5, 2020 10:25:00 AM"
   }
 ]

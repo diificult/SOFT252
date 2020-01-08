@@ -1,6 +1,12 @@
 package data.users;
 
-public class Patient implements iUser{
+import java.util.ArrayList;
+
+import data.Appointment;
+import data.Observable;
+import data.Observer;
+
+public class Patient implements iUser, Observer{
 
 	private String name;
 	private String surname;
@@ -9,9 +15,7 @@ public class Patient implements iUser{
 	private int age;
 	private char gender;
 	private String password;
-	
-	
-
+	private ArrayList<Appointment> AppointmentNotification = new ArrayList<Appointment>();
 
 	public Patient(String name,  String surname, String id, String address, int age, char gender,String password) {
 		this.name = name;
@@ -45,6 +49,13 @@ public class Patient implements iUser{
 	@Override
 	public String getPassword() {
 		return password;
+	}
+
+	@Override
+	public void update(ArrayList<Appointment> a, Observable o) {
+		AppointmentNotification.addAll(a);
+		o.removeObserver(this);
+		
 	}
 	
 }

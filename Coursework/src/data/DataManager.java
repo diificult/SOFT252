@@ -12,6 +12,7 @@ public class DataManager {
 	private static ArrayList<Secretary> Secretarys = new ArrayList<Secretary>();
 	private static ArrayList<Admin> Admins = new ArrayList<Admin>();
 	private static ArrayList<RequestedAppointment> RequestedAppointments = new ArrayList<RequestedAppointment>();
+	private static ArrayList <Appointment> Appointments = new ArrayList<Appointment>();
 	
 	
 	public static void LoadData() {
@@ -21,7 +22,7 @@ public class DataManager {
 		Secretarys = JSon.getSecretarys();
 		Admins = JSon.getAdmins();
 		RequestedAppointments = JSon.getRequestedAppointments();
-		
+		Appointments = JSon.getAppointments();
 		
 	}
 	
@@ -51,6 +52,18 @@ public class DataManager {
 		return Patients;
 	}
 	
+	public static Patient GetPatient(String id) {
+		for (Patient p : Patients) {
+			if (p.getID().equalsIgnoreCase(id)) return p;
+		}
+		return null;
+	}
+	
+	public static void RemovePatient(Patient p) {
+		Patients.remove(p);
+		JSon.storePatients(Patients);
+	}
+	
 	public static void AddDoctor(Doctor d) {
 		Doctors.add(d);
 		JSon.storeDoctors(Doctors);
@@ -59,6 +72,13 @@ public class DataManager {
 	
 	public static ArrayList<Doctor> GetDoctors() {
 		return Doctors;
+	}
+	
+	public static Doctor GetDoctor(String id) {
+		for (Doctor d: Doctors) {
+			if (d.getID().equalsIgnoreCase(id)) return d;
+		}
+		return null;
 	}
 	
 	public static void RemoveDoctor(Doctor d) {
@@ -96,6 +116,21 @@ public class DataManager {
 	
 	public static ArrayList<RequestedAppointment> GetRequestedAppointments() {
  		return RequestedAppointments;
+	}
+	
+	public static void RemoveAppointmentRequest(RequestedAppointment ra) {
+		RequestedAppointments.remove(ra);
+		JSon.storeRequestApp(RequestedAppointments);
+	}
+	
+	public static void AddAppointment(Appointment a) {
+		if (Appointments == null) Appointments = new ArrayList<Appointment>();
+		Appointments.add(a);
+		JSon.storeAppointment(Appointments);
+	}
+	
+	public static ArrayList<Appointment> GetAppointments() {
+		return Appointments;
 	}
 	
 	

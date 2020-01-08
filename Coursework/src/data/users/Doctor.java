@@ -1,6 +1,11 @@
 package data.users;
 
-public class Doctor implements iUser {
+import java.util.ArrayList;
+
+import data.Appointment;
+import data.Observer;
+
+public class Doctor implements iUser, Observer {
 
 	private String name;
 	private String surname;
@@ -39,6 +44,12 @@ public class Doctor implements iUser {
 	@Override
 	public String getPassword() {
 		return password;
+	}
+
+	@Override
+	public void update(ArrayList<Appointment> a) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

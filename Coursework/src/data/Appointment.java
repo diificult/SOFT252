@@ -1,16 +1,18 @@
-package data;  
-import java.util.Date;  
+package data;
 
-public class RequestedAppointment {
+import java.util.Date;
 
+public class Appointment {
+
+	
 	private String DoctorID;
 	private String PatientID;
-	private Date PotentialDate;
+	private Date date;
 	
-	public RequestedAppointment(String DoctorID,   String PatientID,  Date PotentialDate) {
+	public Appointment(String DoctorID, String PatientID, Date date) { 
 		this.DoctorID = DoctorID;
 		this.PatientID = PatientID;
-		this.PotentialDate = PotentialDate;
+		this.date = date;
 	}
 	
 	public String GetDoctorID() {
@@ -22,7 +24,7 @@ public class RequestedAppointment {
 	}
 	
 	public Date GetDate() {
-		return PotentialDate;
+		return date;
 	}
 	
 	

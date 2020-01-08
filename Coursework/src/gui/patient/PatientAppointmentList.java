@@ -55,6 +55,7 @@ public class PatientAppointmentList extends JFrame {
 		gbc_list.gridx = 0;
 		gbc_list.gridy = 0;
 		contentPane.add(list, gbc_list);
+	
 		
 		JButton btnNewButton = new JButton("Back");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
