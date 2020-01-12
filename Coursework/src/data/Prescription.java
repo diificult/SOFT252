@@ -1,5 +1,7 @@
 package data;
 
+import java.util.Date;
+
 public class Prescription {
 	private String DoctorID;
 	private String PatientID;
@@ -7,19 +9,22 @@ public class Prescription {
 	private Medicine medicine;
 	private int Quantity;
 	private String Dosage;
+	private Date date;
 	
-	public Prescription(String DoctorID, String PatientID,String DoctorNote, Medicine medicine, int Quantity, String Dosage) {
+	public Prescription(String DoctorID, String PatientID,String DoctorNote, Medicine medicine, int Quantity, String Dosage, Date date) {
 		this.DoctorID = DoctorID;
 		this.PatientID = PatientID;
 		this.DoctorNote = DoctorNote;
 		this.medicine = medicine;
 		this.Quantity = Quantity;
 		this.Dosage = Dosage;
+		this.date = date;
 	}
-	public Prescription(String DoctorID, String PatientID, String DoctorNote) {
+	public Prescription(String DoctorID, String PatientID, String DoctorNote, Date date) {
 		this.DoctorID = DoctorID;
 		this.PatientID = PatientID;
 		this.DoctorNote = DoctorNote;
+		this.date = date;
 	}
 	
 	private String GetDoctorID() {
@@ -44,6 +49,10 @@ public class Prescription {
 	
 	private String GetDosage() {
 		return Dosage;
+	}
+	
+	private Date GetDate() {
+		return date;
 	}
 	
 	
