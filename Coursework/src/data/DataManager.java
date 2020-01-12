@@ -13,6 +13,8 @@ public class DataManager {
 	private static ArrayList<Admin> Admins = new ArrayList<Admin>();
 	private static ArrayList<RequestedAppointment> RequestedAppointments = new ArrayList<RequestedAppointment>();
 	private static ArrayList <Appointment> Appointments = new ArrayList<Appointment>();
+	private static ArrayList<Medicine> Medicines = new ArrayList<Medicine>();
+	private static ArrayList<MedicineRequest> MedicineRequests = new ArrayList<MedicineRequest>();
 	
 	
 	public static void LoadData() {
@@ -23,10 +25,13 @@ public class DataManager {
 		Admins = JSon.getAdmins();
 		RequestedAppointments = JSon.getRequestedAppointments();
 		Appointments = JSon.getAppointments();
+		Medicines = JSon.getMedicine();
+		MedicineRequests = JSon.getMedicineRequest();
 		
 	}
 	
 	public static void AddAccountRequest(AccountRequest ar) {
+		if(RequestedAccounts == null) RequestedAccounts = new ArrayList<AccountRequest>(); 
 		RequestedAccounts.add(ar);
 		JSon.storeRequestAccount(RequestedAccounts);
 		
@@ -70,6 +75,7 @@ public class DataManager {
 	
 	
 	public static void AddDoctor(Doctor d) {
+		if (Doctors == null) Doctors = new ArrayList<Doctor>();
 		Doctors.add(d);
 		JSon.storeDoctors(Doctors);
 		
@@ -142,6 +148,35 @@ public class DataManager {
 		return Appointments;
 	}
 	
+	public static void AddMedicine(Medicine m) {
+		if (Medicines == null) Medicines = new ArrayList<Medicine>();
+		Medicines.add(m);
+		JSon.storeMedicine(Medicines);
+	}
 	
+	public static void RemoveMedicine(Medicine m) {
+		Medicines.remove(m);
+		JSon.storeMedicine(Medicines);
+	}
+	
+	public static ArrayList<Medicine> GetMedicines() {
+		return Medicines;
+	}
+
+	public static void AddMedicineRequest(MedicineRequest m) {
+		if (MedicineRequests == null) MedicineRequests =  new ArrayList<MedicineRequest>();
+		MedicineRequests.add(m);
+		JSon.storeMedicineRequest(MedicineRequests);
+	}
+	
+	public static void RemoveMedicineRequest(MedicineRequest m) {
+		MedicineRequests.remove(m);
+		JSon.storeMedicineRequest(MedicineRequests);
+	}
+	
+	public static ArrayList<MedicineRequest> GetMedicineRequests() {
+		return MedicineRequests;
+	}
 	
 }
+ 

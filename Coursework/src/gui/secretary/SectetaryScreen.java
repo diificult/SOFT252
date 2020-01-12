@@ -53,6 +53,19 @@ public class SectetaryScreen extends JFrame {
 				dispose();
 			}
 		});
+
+		JButton btnApproveMedicine = new JButton("Approve Medicine");
+		contentPane.add(btnApproveMedicine);
+		btnApproveMedicine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ApproveMedicine am = new ApproveMedicine();
+				am.setVisible(true);
+				dispose();
+			}
+		}
+
+		);
+
 	}
 
 }

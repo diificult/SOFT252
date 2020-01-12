@@ -20,7 +20,6 @@ public class DoctorScreen extends JFrame {
 
 	private JPanel contentPane;
 
-
 	public DoctorScreen(Doctor d) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 190);
@@ -28,7 +27,7 @@ public class DoctorScreen extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(2, 1, 0, 0));
-		
+
 		JButton btnAppointments = new JButton("Appointments");
 		contentPane.add(btnAppointments);
 		btnAppointments.addActionListener(new ActionListener() {
@@ -37,10 +36,18 @@ public class DoctorScreen extends JFrame {
 				a.setVisible(true);
 				dispose();
 			}
-			});
-		
+		});
+
 		JButton btnRequest = new JButton("Request Medicine");
 		contentPane.add(btnRequest);
+		btnRequest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RequestMedicine rm = new RequestMedicine();
+				rm.setVisible(true);
+				dispose();
+			}
+		});
+
 		ArrayList<Appointment> appointmentNotificaiton = d.getNotification();
 		if (appointmentNotificaiton != null) {
 			String message = "The following appointments have been approved: \n ";

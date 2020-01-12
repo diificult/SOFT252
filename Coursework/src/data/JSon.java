@@ -290,4 +290,81 @@ public class JSon {
 	}
 	
 	
+	public static void storeMedicine(ArrayList<Medicine> ra) {
+		GsonBuilder gb = new GsonBuilder();
+		gb.serializeNulls();
+		gb.setPrettyPrinting();
+		Gson Admins = gb.create();
+		FileWriter fw;
+		try {
+			fw = new FileWriter("Medicines.json");
+			Admins.toJson(ra, fw);
+			fw.flush();
+			fw.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}	
+	}
+	
+	private static final Type MEDICINE_TYPE = new TypeToken<ArrayList<Medicine>>() {
+	}.getType();
+	
+	public static ArrayList<Medicine> getMedicine() {
+		Gson gson = new Gson();
+		ArrayList<Medicine> request = new ArrayList<Medicine>();
+		try {
+			JsonReader jr = new JsonReader(new FileReader("Medicines.json"));
+			 request = gson.fromJson(jr, MEDICINE_TYPE);
+		} catch (FileNotFoundException e) {
+			File file = new File("Medicines.json");
+			try {
+				file.createNewFile();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		return request;
+	}
+	
+	
+	public static void storeMedicineRequest(ArrayList<MedicineRequest> ra) {
+		GsonBuilder gb = new GsonBuilder();
+		gb.serializeNulls();
+		gb.setPrettyPrinting();
+		Gson requests = gb.create();
+		FileWriter fw;
+		try {
+			fw = new FileWriter("MedicineRequests.json");
+			requests.toJson(ra, fw);
+			fw.flush();
+			fw.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}	
+	}
+	
+	private static final Type MEDICINEREQUEST_TYPE = new TypeToken<ArrayList<MedicineRequest>>() {
+	}.getType();
+	
+	public static ArrayList<MedicineRequest> getMedicineRequest() {
+		Gson gson = new Gson();
+		ArrayList<MedicineRequest> request = new ArrayList<MedicineRequest>();
+		try {
+			JsonReader jr = new JsonReader(new FileReader("MedicineRequests.json"));
+			 request = gson.fromJson(jr, MEDICINEREQUEST_TYPE);
+		} catch (FileNotFoundException e) {
+			File file = new File("MedicineRequests.json");
+			try {
+				file.createNewFile();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		return request;
+	}
+	
+	
+	
 }
