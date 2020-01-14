@@ -6,16 +6,16 @@ public class AppointmentNotification implements Observable {
 
 	private ArrayList<Appointment> appointments = new ArrayList<Appointment>();
 	private ArrayList<Observer> observers = new ArrayList<Observer>();
-	
-	public  AppointmentNotification() {
-		
+
+	public AppointmentNotification() {
+
 	}
-	
+
 	public void addAppointment(Appointment a) {
 		appointments.add(a);
 		notifyObserver();
 	}
-	
+
 	@Override
 	public void registerObserver(Observer observer) {
 		observers.add(observer);

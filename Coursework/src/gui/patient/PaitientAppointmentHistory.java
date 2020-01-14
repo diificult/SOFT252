@@ -61,7 +61,7 @@ public class PaitientAppointmentHistory extends JFrame {
 			}
 		}
 
-		//Button that shows the selected 
+		// Button that shows the selected
 		JButton btnDetails = new JButton("View Details");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
@@ -73,10 +73,10 @@ public class PaitientAppointmentHistory extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-				Prescription p = PatientPrescriptions.get(list.getSelectedIndex());
-				AppointmentDetails ad = new AppointmentDetails(p);
-				ad.setVisible(true);
-				dispose();
+					Prescription p = PatientPrescriptions.get(list.getSelectedIndex());
+					AppointmentDetails ad = new AppointmentDetails(p);
+					ad.setVisible(true);
+					dispose();
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(contentPane, "Please select a prescription from the list");
 				}
@@ -90,15 +90,15 @@ public class PaitientAppointmentHistory extends JFrame {
 		gbc_btnNewButton_1.gridy = 1;
 		contentPane.add(btnBack, gbc_btnNewButton_1);
 		btnBack.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PatientScreen ps = new PatientScreen((Patient)Main.getAccount());
+				PatientScreen ps = new PatientScreen((Patient) Main.getAccount());
 				ps.setVisible(true);
 				dispose();
-				
+
 			}
 		});
 	}
 
-} 
+}

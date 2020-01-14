@@ -52,12 +52,12 @@ public class PatientAppointmentList extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWidths = new int[] { 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
-		
+
 		DefaultListModel model = new DefaultListModel();
 		JList list = new JList();
 		GridBagConstraints gbc_list = new GridBagConstraints();
@@ -67,19 +67,17 @@ public class PatientAppointmentList extends JFrame {
 		gbc_list.gridy = 0;
 		contentPane.add(list, gbc_list);
 		ArrayList<Appointment> apps = DataManager.GetAppointments();
-		Patient account = (Patient)Main.getAccount();
+		Patient account = (Patient) Main.getAccount();
 		int i = 0;
 		for (Appointment a : apps) {
-			
+
 			if (a.GetDoctorID().equals(account.getID())) {
 				Doctor d = DataManager.GetDoctor(a.GetDoctorID());
 				model.add(i, a.GetDate() + " with " + d.getName() + " " + d.getSurname());
 				i++;
 			}
 		}
-		
-	
-		
+
 		JButton btnNewButton = new JButton("Back");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.gridx = 0;

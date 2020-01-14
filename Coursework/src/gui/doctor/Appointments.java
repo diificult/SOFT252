@@ -90,7 +90,7 @@ public class Appointments extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				DoctorScreen ds = new DoctorScreen((Doctor)Main.getAccount());
+				DoctorScreen ds = new DoctorScreen((Doctor) Main.getAccount());
 				ds.setVisible(true);
 				dispose();
 			}

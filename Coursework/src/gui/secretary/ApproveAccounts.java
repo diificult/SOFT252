@@ -25,6 +25,7 @@ import data.users.UserFactory;
 public class ApproveAccounts extends JFrame {
 
 	private JPanel contentPane;
+
 	/**
 	 * Create the frame.
 	 */
@@ -35,12 +36,12 @@ public class ApproveAccounts extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
-		
+
 		DefaultListModel model = new DefaultListModel();
 		JList lstAccounts = new JList(model);
 		GridBagConstraints gbc_lstAccounts = new GridBagConstraints();
@@ -54,15 +55,17 @@ public class ApproveAccounts extends JFrame {
 		ArrayList<AccountRequest> ar = DataManager.GetAccountRequests();
 		int i = 0;
 		for (AccountRequest r : ar) {
-			model.add(i, r.GetName() + " " + r.GetSurname() + ", " + r.GetAddress() + ", " + r.GetGender() + "" + r.GetAge());
-			 i++;
+			model.add(i, r.GetName() + " " + r.GetSurname() + ", " + r.GetAddress() + ", " + r.GetGender() + ""
+					+ r.GetAge());
+			i++;
 		}
-		
+
 		JButton btnApprove = new JButton("Approve");
 		btnApprove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AccountRequest r = ar.get(lstAccounts.getSelectedIndex());
-				UserFactory.CreateUser(r.GetName(), r.GetSurname(),r.GetAddress(),r.GetAge(),r.GetGender(),r.GetPassword());
+				UserFactory.CreateUser(r.GetName(), r.GetSurname(), r.GetAddress(), r.GetAge(), r.GetGender(),
+						r.GetPassword());
 				DataManager.RemoveAccountRequest(r);
 				model.remove(lstAccounts.getSelectedIndex());
 			}
@@ -72,7 +75,7 @@ public class ApproveAccounts extends JFrame {
 		gbc_btnApprove.gridx = 0;
 		gbc_btnApprove.gridy = 1;
 		contentPane.add(btnApprove, gbc_btnApprove);
-		
+
 		JButton btnBack = new JButton("Back");
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
 		gbc_btnBack.gridx = 1;

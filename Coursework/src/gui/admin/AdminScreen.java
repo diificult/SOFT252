@@ -44,7 +44,7 @@ public class AdminScreen extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 3, 50, 3));
-		
+
 		JButton btnRemove = new JButton("Remove Account");
 		contentPane.add(btnRemove);
 		btnRemove.addActionListener(new ActionListener() {
@@ -53,20 +53,20 @@ public class AdminScreen extends JFrame {
 				rc.setVisible(true);
 				contentPane.setVisible(false);
 			}
-			});
+		});
 		JButton btnCreate = new JButton("Create Account");
 		contentPane.add(btnCreate);
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CreateAccount ca =  new CreateAccount();
+				CreateAccount ca = new CreateAccount();
 				ca.setVisible(true);
 				contentPane.setVisible(false);
 			}
-			});
-		
+		});
+
 		JButton btnFeedback = new JButton("Feedback");
 		contentPane.add(btnFeedback);
-		
+
 	}
 
 }

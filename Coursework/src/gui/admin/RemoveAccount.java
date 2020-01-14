@@ -105,7 +105,7 @@ public class RemoveAccount extends JFrame {
 					}
 				}
 			}
-			});
+		});
 	}
 
 }

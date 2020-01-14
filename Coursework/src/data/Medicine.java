@@ -9,7 +9,7 @@ public class Medicine {
 		this.name = name;
 		this.stock = stock;
 	}
-	
+
 	public Medicine(String name) {
 		this.name = name;
 	}
@@ -25,12 +25,10 @@ public class Medicine {
 	public boolean RemoveStock(int qty) {
 		if (qty > stock) {
 			return false;
-		}
-		else if (qty == stock) {
+		} else if (qty == stock) {
 			DataManager.RemoveMedicine(this);
 			return true;
-		}
-		else {
+		} else {
 			stock -= qty;
 			return true;
 		}
@@ -42,11 +40,10 @@ public class Medicine {
 		if (qty >= stock && returnMax) {
 			DataManager.RemoveMedicine(this);
 			return stock;
-		}
-		else {
+		} else {
 			stock -= qty;
 			return qty;
 		}
-	} 
+	}
 
 }

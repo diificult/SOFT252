@@ -36,25 +36,25 @@ public class Login extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		txtID = new JTextField();
 		txtID.setBounds(102, 76, 215, 31);
 		contentPane.add(txtID);
 		txtID.setColumns(10);
-		
+
 		JLabel lblName = new JLabel("ID");
 		lblName.setBounds(202, 58, 11, 14);
 		contentPane.add(lblName);
-		
+
 		txtPassword = new JTextField();
 		txtPassword.setColumns(10);
 		txtPassword.setBounds(102, 135, 215, 31);
 		contentPane.add(txtPassword);
-		
+
 		lblPassword = new JLabel("Password");
 		lblPassword.setBounds(186, 118, 46, 14);
 		contentPane.add(lblPassword);
-		
+
 		btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -63,26 +63,29 @@ public class Login extends JFrame {
 				case 'P':
 					ArrayList<Patient> patients = DataManager.GetPatients();
 					for (Patient p : patients) {
-						if (txtID.getText().equalsIgnoreCase(p.getID())  && txtPassword.getText().equalsIgnoreCase(p.getPassword())) {
+						if (txtID.getText().equalsIgnoreCase(p.getID())
+								&& txtPassword.getText().equalsIgnoreCase(p.getPassword())) {
 							Main.OpenPatient(p);
 							dispose();
-							
+
 						}
 					}
 					break;
-				case 'D' : 
-					ArrayList<Doctor> drs= DataManager.GetDoctors();
+				case 'D':
+					ArrayList<Doctor> drs = DataManager.GetDoctors();
 					for (Doctor d : drs) {
-						if (txtID.getText().equalsIgnoreCase(d.getID())  && txtPassword.getText().equalsIgnoreCase(d.getPassword())) {
+						if (txtID.getText().equalsIgnoreCase(d.getID())
+								&& txtPassword.getText().equalsIgnoreCase(d.getPassword())) {
 							Main.OpenDoctor(d);
 							dispose();
 						}
 					}
 					break;
 				case 'S':
-					ArrayList<Secretary> secs= DataManager.GetSecretarys();
+					ArrayList<Secretary> secs = DataManager.GetSecretarys();
 					for (Secretary s : secs) {
-						if (txtID.getText().equalsIgnoreCase(s.getID())  && txtPassword.getText().equalsIgnoreCase(s.getPassword())) {
+						if (txtID.getText().equalsIgnoreCase(s.getID())
+								&& txtPassword.getText().equalsIgnoreCase(s.getPassword())) {
 							Main.OpenSecretary(s);
 							dispose();
 						}
@@ -90,18 +93,19 @@ public class Login extends JFrame {
 					break;
 				case 'A':
 					System.out.print(1);
-					ArrayList<Admin> admins= DataManager.GetAdmins();
+					ArrayList<Admin> admins = DataManager.GetAdmins();
 					for (Admin a : admins) {
 						System.out.print(2);
 						System.out.print(txtID.getText() + " " + txtPassword.getText());
-						if (txtID.getText().equalsIgnoreCase(a.getID())  && txtPassword.getText().equalsIgnoreCase(a.getPassword())) {
+						if (txtID.getText().equalsIgnoreCase(a.getID())
+								&& txtPassword.getText().equalsIgnoreCase(a.getPassword())) {
 							System.out.print(3);
 							Main.OpenAdmin(a);
 							dispose();
 						}
 					}
 					break;
-				default: 
+				default:
 					break;
 				}
 			}

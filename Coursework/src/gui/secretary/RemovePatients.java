@@ -22,7 +22,6 @@ public class RemovePatients extends JFrame {
 
 	private JPanel contentPane;
 
-
 	/**
 	 * Create the frame.
 	 */
@@ -33,12 +32,12 @@ public class RemovePatients extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
-		
+
 		DefaultListModel model = new DefaultListModel();
 		JList lstAccounts = new JList(model);
 		GridBagConstraints gbc_lstAccounts = new GridBagConstraints();
@@ -49,9 +48,9 @@ public class RemovePatients extends JFrame {
 		gbc_lstAccounts.gridy = 0;
 		contentPane.add(lstAccounts, gbc_lstAccounts);
 		ArrayList<Patient> ps = DataManager.GetPatients();
-		int i =0;
+		int i = 0;
 		for (Patient p : ps) {
-			model.add(i, p.getID() + " : " + p.getName() + " " + p.getSurname() + " | "  + p.getAddress());
+			model.add(i, p.getID() + " : " + p.getName() + " " + p.getSurname() + " | " + p.getAddress());
 			i++;
 		}
 		JButton btnRemove = new JButton("Remove");
@@ -68,7 +67,7 @@ public class RemovePatients extends JFrame {
 		gbc_btnRemove.gridx = 0;
 		gbc_btnRemove.gridy = 1;
 		contentPane.add(btnRemove, gbc_btnRemove);
-		
+
 		JButton btnBack = new JButton("Back");
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
 		gbc_btnBack.gridx = 1;

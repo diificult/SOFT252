@@ -21,9 +21,9 @@ public class UserFactory implements iUserFactory {
 			// adding one to it, to the end of the letter D
 			else
 				id = "D" + String.format("%04d", Integer.parseInt(drs.get(drs.size() - 1).getID().substring(1, 5)) + 1);
-			//Creates the doctor 
+			// Creates the doctor
 			Doctor d = new Doctor(name, surname, id, address, password);
-			//Adds it to the data
+			// Adds it to the data
 			DataManager.AddDoctor(d);
 			// Breaks out of the case
 			break;
@@ -52,8 +52,7 @@ public class UserFactory implements iUserFactory {
 
 	}
 
-	
-	//This other method is due to the age and gender additional details.
+	// This other method is due to the age and gender additional details.
 	public static void CreateUser(String name, String surname, String address, int age, char gender, String password) {
 		ArrayList<Patient> ps = DataManager.GetPatients();
 		String id;
