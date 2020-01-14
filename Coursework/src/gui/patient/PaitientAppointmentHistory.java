@@ -49,12 +49,15 @@ public class PaitientAppointmentHistory extends JFrame {
 		gbc_list.gridx = 0;
 		gbc_list.gridy = 0;
 		contentPane.add(list, gbc_list);
+		//Gets all of the prescriptions
 		ArrayList<Prescription> pres = DataManager.GetPrescription();
 		Patient pa = (Patient) Main.getAccount();
+		//List of prescriptions for that user
 		ArrayList<Prescription> PatientPrescriptions = new ArrayList<Prescription>();
 		int i = 0;
 		for (Prescription p : pres) {
 			if (p.GetPatientID() == pa.getID()) {
+				//Add prescriptions to the list and shows them to the user
 				PatientPrescriptions.add(p);
 				model.add(i, "Dr. " + DataManager.GetDoctor(p.GetDoctorID()).getName() + " " + p.GetDate());
 				i++;
@@ -78,12 +81,14 @@ public class PaitientAppointmentHistory extends JFrame {
 					ad.setVisible(true);
 					dispose();
 				} catch (Exception ex) {
+					//If they do not select a prescription, will create an error and tells the user
 					JOptionPane.showMessageDialog(contentPane, "Please select a prescription from the list");
 				}
 
 			}
 		});
 
+		//Back button
 		JButton btnBack = new JButton("Go Back");
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.gridx = 1;

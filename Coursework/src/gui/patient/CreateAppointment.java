@@ -1,6 +1,5 @@
 package gui.patient;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -45,22 +44,28 @@ public class CreateAppointment extends JFrame {
 		JComboBox comboBox = new JComboBox(m);
 		comboBox.setBounds(127, 36, 149, 22);
 		contentPane.add(comboBox);
+		//Gets the doctors
 		ArrayList<Doctor> drs = DataManager.GetDoctors();
 		for (Doctor d : drs) {
+			
+			//Adds doctors to the combo box
 			m.addElement(d.getID() + " Dr " + d.getName() + " " + d.getSurname());
 
 		}
 
+		//Spinner for the day limited to 1st-31st
 		JSpinner spDay = new JSpinner();
 		spDay.setModel(new SpinnerNumberModel(1, 1, 31, 1));
 		spDay.setBounds(127, 107, 39, 20);
 		contentPane.add(spDay);
 
+		//Spinner for the month limited to the 1-12
 		JSpinner spMonth = new JSpinner();
 		spMonth.setModel(new SpinnerNumberModel(1, 1, 12, 1));
 		spMonth.setBounds(185, 107, 36, 20);
 		contentPane.add(spMonth);
 
+		//Spinner for the year limited to 2020 - 2021
 		JSpinner spYear = new JSpinner();
 		spYear.setModel(new SpinnerNumberModel(2020, 2020, 2021, 1));
 		spYear.setBounds(235, 107, 57, 20);
@@ -70,11 +75,13 @@ public class CreateAppointment extends JFrame {
 		lblDate.setBounds(193, 80, 48, 14);
 		contentPane.add(lblDate);
 
+		//Spinner for hour limited to 8 - 18 (general open hours)
 		JSpinner spHour = new JSpinner();
 		spHour.setModel(new SpinnerNumberModel(8, 8, 18, 1));
 		spHour.setBounds(150, 165, 48, 20);
 		contentPane.add(spHour);
 
+		//Spinner limited to 0-55, going up in steps of 5
 		JSpinner spMinute = new JSpinner();
 		spMinute.setModel(new SpinnerNumberModel(0, 0, 55, 5));
 		spMinute.setBounds(217, 166, 48, 20);
@@ -84,25 +91,30 @@ public class CreateAppointment extends JFrame {
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
+				
+				//Stores the date
 				Date date = new Date((int) spYear.getValue() - 1900, (int) spMonth.getValue() - 1,
 						(int) spDay.getValue(), (int) spHour.getValue(), (int) spMinute.getValue(), 0);
 				System.out.println(date);
 				String id = m.getSelectedItem().toString().substring(0, 5);
 				String DrId = null;
 
+				//Gets the doctors id
 				for (Doctor d : drs) {
 					if (d.getID().equals(id)) {
 						DrId = d.getID();
 						break;
 					}
 				}
-
-				Patient Patient = (data.users.Patient) Main.getAccount();
+				
+				//Gets the patient
+				Patient Patient = (Patient) Main.getAccount();
 				String PatientID = Patient.getID();
 
+				//Adds the new appointment as a request
 				RequestedAppointment ra = new RequestedAppointment(DrId, PatientID, date);
 				DataManager.AddRequestedAppointment(ra);
-				
+				//Goes back to the main menu
 				PatientScreen ps = new PatientScreen(Patient);
 				ps.setVisible(true);
 				dispose();

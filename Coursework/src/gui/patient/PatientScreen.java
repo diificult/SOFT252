@@ -31,9 +31,22 @@ public class PatientScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 
-		JButton btnNewButton = new JButton("View History");
-		contentPane.add(btnNewButton);
+		//Button to see all of the appointments
+		JButton btnHistory = new JButton("View History");
+		contentPane.add(btnHistory);
+		btnHistory.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PaitientAppointmentHistory pah = new PaitientAppointmentHistory();
+				pah.setVisible(true);
+				dispose();
+				
+				
+			}
+		});
 
+		//Button for seeing upcoming appointments
 		JButton btnUpcoming = new JButton("View Upcoming Appointments");
 		contentPane.add(btnUpcoming);
 		btnUpcoming.addActionListener(new ActionListener() {
@@ -43,6 +56,8 @@ public class PatientScreen extends JFrame {
 				dispose();
 			}
 		});
+		
+		//Button for the screen for the creating of appointments
 
 		JButton btnCreate = new JButton("Create Appointment");
 		contentPane.add(btnCreate);
@@ -54,13 +69,13 @@ public class PatientScreen extends JFrame {
 			}
 		});
 
-		JButton btnNewButton_2 = new JButton("Request Appointment");
-		contentPane.add(btnNewButton_2);
-
+		
+		//Notification of approved appointments
 		ArrayList<Appointment> appointmentNotificaiton = p.getNotification();
 		if (appointmentNotificaiton != null && !appointmentNotificaiton.isEmpty()) {
 			String message = "The following appointments have been approved: \n ";
 
+			//Goes through the list of notifications and adds them to the string
 			for (Appointment notifi : appointmentNotificaiton) {
 				Doctor d = DataManager.GetDoctor(notifi.GetDoctorID());
 				message += notifi.GetDate() + " with " + d.getName() + " " + d.getSurname() + " \n";

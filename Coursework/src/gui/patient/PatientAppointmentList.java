@@ -71,6 +71,7 @@ public class PatientAppointmentList extends JFrame {
 		ArrayList<Appointment> apps = DataManager.GetAppointments();
 		Patient account = (Patient) Main.getAccount();
 		int i = 0;
+		//Shows all of the appointments for this user
 		for (Appointment a : apps) {
 
 			if (a.GetPatientID().equals(account.getID())) {

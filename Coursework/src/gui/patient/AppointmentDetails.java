@@ -65,7 +65,7 @@ public class AppointmentDetails extends JFrame {
 		gbc_lblNewLabel_1.gridx = 0;
 		gbc_lblNewLabel_1.gridy = 2;
 		contentPane.add(lblNewLabel_1, gbc_lblNewLabel_1);
-
+		//Puts the notes in
 		String notes = p.GetDoctorNote();
 		txtNotes = new JTextField(notes);
 		txtNotes.setEditable(false);
@@ -86,6 +86,7 @@ public class AppointmentDetails extends JFrame {
 
 		Medicine m = p.GetMedicine();
 		if (m != null) {
+			//Shows the medicine details
 			String Dosage = p.GetDosage();
 			int qty = p.GetQuantity();
 			txtMedicine = new JTextField(m.GetName() + " Dosage: " + Dosage + " Qty: " + qty);
