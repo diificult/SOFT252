@@ -56,6 +56,7 @@ public class RemovePatients extends JFrame {
 		JButton btnRemove = new JButton("Remove");
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Gets selected patient and removes them from the list
 				Patient p = ps.get(lstAccounts.getSelectedIndex());
 				DataManager.RemovePatient(p);
 				model.removeElementAt(lstAccounts.getSelectedIndex());

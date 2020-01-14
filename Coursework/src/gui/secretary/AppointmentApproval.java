@@ -68,18 +68,22 @@ public class AppointmentApproval extends JFrame {
 		gbc_lstRequest.gridx = 0;
 		gbc_lstRequest.gridy = 1;
 		contentPane.add(lstRequest, gbc_lstRequest);
+		//Gets list of appointments
 		ArrayList<RequestedAppointment> ra = DataManager.GetRequestedAppointments();
 		int i = 0;
 		if (ra != null) {
 			for (RequestedAppointment r : ra) {
+				//Gets the doctor and patient for this appointment
 				Doctor d = DataManager.GetDoctor(r.GetDoctorID());
 				Patient p = DataManager.GetPatient(r.GetPatientID());
+				//Shows details
 				model.add(i, d.getID() + " " + d.getName() + " " + d.getSurname() + " seeing " + p.getID() + " "
 						+ p.getName() + " " + p.getSurname() + " at " + r.GetDate());
 				i++;
 			}
 		}
 
+		//List of all current future appointments
 		DefaultListModel futureModel = new DefaultListModel();
 		JList lstFuture = new JList(futureModel);
 		GridBagConstraints gbc_lstFuture = new GridBagConstraints();
@@ -93,6 +97,7 @@ public class AppointmentApproval extends JFrame {
 		i = 0;
 		if (apps != null) {
 			for (Appointment a : apps) {
+				//Gets details and shows them
 				Doctor d = DataManager.GetDoctor(a.GetDoctorID());
 				Patient p = DataManager.GetPatient(a.GetPatientID());
 				futureModel.add(i, d.getID() + " " + d.getName() + " " + d.getSurname() + " seeing " + p.getID() + " "
@@ -109,17 +114,23 @@ public class AppointmentApproval extends JFrame {
 		contentPane.add(btnApprove, gbc_btnApprove);
 		btnApprove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				//Gets all details about approved 
 				RequestedAppointment r = ra.get(lstRequest.getSelectedIndex());
 				Appointment a = new Appointment(r.GetDoctorID(), r.GetPatientID(), r.GetDate());
 				Doctor d = DataManager.GetDoctor(r.GetDoctorID());
 				Patient p = DataManager.GetPatient(r.GetPatientID());
+				//Creates the notifiation system
 				AppointmentNotification notification = new AppointmentNotification();
 				notification.registerObserver(p);
 				notification.registerObserver(d);
 				notification.addAppointment(a);
+				//Updates data
 				DataManager.UpdatePatients();
+				DataManager.UpdateDoctor();
 				DataManager.AddAppointment(a);
 				DataManager.RemoveAppointmentRequest(r);
+				//Removes from request and adds to future
 				ra.remove(r);
 				futureModel.add(futureModel.getSize(), d.getID() + " " + d.getName() + " " + d.getSurname() + " seeing "
 						+ p.getID() + " " + p.getName() + " " + p.getSurname() + " at " + r.GetDate());
@@ -142,6 +153,8 @@ public class AppointmentApproval extends JFrame {
 			cboDoctorModel.addElement(d.getID() + " DR " + d.getName() + " " + d.getSurname());
 		}
 
+		
+		//This is for if it wants to be approved with a different doctor
 		JButton btnApproveNew = new JButton("Approve with new selected doctor");
 		GridBagConstraints gbc_btnApproveNew = new GridBagConstraints();
 		gbc_btnApproveNew.anchor = GridBagConstraints.SOUTH;
@@ -151,14 +164,18 @@ public class AppointmentApproval extends JFrame {
 		contentPane.add(btnApproveNew, gbc_btnApproveNew);
 		btnApproveNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Gets data
 				RequestedAppointment r = ra.get(lstRequest.getSelectedIndex());
 				Doctor d = drs.get(cboDoctor.getSelectedIndex());
 				Patient p = DataManager.GetPatient(r.GetPatientID());
 				Appointment a = new Appointment(d.getID(), r.GetPatientID(), r.GetDate());
+				//Notification system
 				AppointmentNotification notification = new AppointmentNotification();
 				notification.registerObserver(p);
 				notification.registerObserver(d);
 				notification.addAppointment(a);
+				
+				//Updates with new data
 				DataManager.AddAppointment(a);
 				DataManager.RemoveAppointmentRequest(r);
 				DataManager.UpdatePatients();

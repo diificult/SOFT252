@@ -101,9 +101,11 @@ public class ApproveMedicine extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				MedicineRequest r = MedicineRequests.get(lstMedicines.getSelectedIndex());
 				int qty = r.getRQty();
+				//Checks if quantity is being overwritten
 				if (cboxOverwrite.isSelected()) {
 					qty = (int) spQty.getValue();
 				}
+				//Create the new medicine with this stock
 				Medicine m = new Medicine(r.getName(), qty);
 				DataManager.AddMedicine(m);
 				model.remove(lstMedicines.getSelectedIndex());

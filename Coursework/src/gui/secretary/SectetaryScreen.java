@@ -24,7 +24,8 @@ public class SectetaryScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 
-		JButton btnApprove = new JButton("Approve Accounts & Deactivation");
+		//Button to approve accounts
+		JButton btnApprove = new JButton("Approve Accounts ");
 		contentPane.add(btnApprove);
 		btnApprove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -34,6 +35,7 @@ public class SectetaryScreen extends JFrame {
 			}
 		});
 
+		//Button to view requested appointments
 		JButton btnAppointments = new JButton("Appointment Requests");
 		contentPane.add(btnAppointments);
 		btnAppointments.addActionListener(new ActionListener() {
@@ -43,7 +45,10 @@ public class SectetaryScreen extends JFrame {
 				dispose();
 			}
 		});
+		
+		
 
+		//Button to remove patients
 		JButton btnRemove = new JButton("Remove Patients");
 		contentPane.add(btnRemove);
 		btnRemove.addActionListener(new ActionListener() {
@@ -54,6 +59,7 @@ public class SectetaryScreen extends JFrame {
 			}
 		});
 
+		//Buttom to remove medicine
 		JButton btnApproveMedicine = new JButton("Approve Medicine");
 		contentPane.add(btnApproveMedicine);
 		btnApproveMedicine.addActionListener(new ActionListener() {

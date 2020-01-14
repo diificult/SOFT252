@@ -60,10 +60,13 @@ public class ApproveAccounts extends JFrame {
 			i++;
 		}
 
+		
+		//Approves select account
 		JButton btnApprove = new JButton("Approve");
 		btnApprove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AccountRequest r = ar.get(lstAccounts.getSelectedIndex());
+				//Calls user factory to create user with updated details
 				UserFactory.CreateUser(r.GetName(), r.GetSurname(), r.GetAddress(), r.GetAge(), r.GetGender(),
 						r.GetPassword());
 				DataManager.RemoveAccountRequest(r);
