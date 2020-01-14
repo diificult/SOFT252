@@ -8,6 +8,7 @@ import data.Observer;
 
 public class Patient implements iUser, Observer{
 
+	//Usual details plus age & gender
 	private String name;
 	private String surname;
 	private String id;
@@ -15,6 +16,7 @@ public class Patient implements iUser, Observer{
 	private int age;
 	private char gender;
 	private String password;
+	//Patient notification system
 	private ArrayList<Appointment> AppointmentNotification = new ArrayList<Appointment>();
 
 	public Patient(String name,  String surname, String id, String address, int age, char gender,String password) {
@@ -61,8 +63,11 @@ public class Patient implements iUser, Observer{
 
 	@Override
 	public void update(ArrayList<Appointment> a, Observable o) {
+		//If the list is empty it must be made into a  new array list as it will cause errors
 		if (AppointmentNotification == null ) AppointmentNotification = new ArrayList<Appointment>();
+		//Adds all of the appointment updates
 		AppointmentNotification.addAll(a);
+		//Removes this from the observer as it doesnt need anymore updates from this appointment
 		o.removeObserver(this);
 		
 	}

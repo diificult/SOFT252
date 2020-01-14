@@ -1,6 +1,7 @@
 package data.users;
 
 public interface iUser {
+	//Interface for user. Must have these details
 	static String name = "";
 	static String id = "";
 	static String surname = "";
