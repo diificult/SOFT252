@@ -20,34 +20,52 @@ import data.users.Secretary;
 
 public class JSon {
 
+	//This is all the JSON that is used. Each section uses its own code. 
+	//Didnt get round to making it into two methods imputing the type to minimise this code
+	
+	//This is the code for all of the "Store" methods
 	public static void storeRequestAccount(ArrayList<AccountRequest> ar) {
+		//Creates a new method that is a JSON builder. This turns the data into JSON
 		GsonBuilder gb = new GsonBuilder();
+		// Allows nulls to be serialized into the data
 		gb.serializeNulls();
+		// Makes the JSON look good and readable
 		gb.setPrettyPrinting();
+		//Now makes the GSON type with the builder we made/
 		Gson RequestAccount = gb.create();
 		FileWriter fw;
 		try {
+			//Gets the file into a file writer
 			fw = new FileWriter("RequestAccount.json");
-
+			//Turns the data into JSON
 			RequestAccount.toJson(ar, fw);
 
+			//Flushes the data buffer to make sure it goes into the fle
 			fw.flush();
+			//Closes the file writer
 			fw.close();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 	}
 
+	//Gets the type for this ArrayList
 	private static final Type ACCOUNTREQUEST_TYPE = new TypeToken<ArrayList<AccountRequest>>() {
 	}.getType();
 
+	//This is the method used for all the "Get"ting of the data
 	public static ArrayList<AccountRequest> getRequestAccounts() {
+		//Creatsa new GSON type
 		Gson gson = new Gson();
+		//Stores the requested data
 		ArrayList<AccountRequest> request = new ArrayList<AccountRequest>();
 		try {
+			//Tries to start a json reader and with the file
 			JsonReader jr = new JsonReader(new FileReader("RequestAccount.json"));
+			//Converts the data into arraylists
 			request = gson.fromJson(jr, ACCOUNTREQUEST_TYPE);
 		} catch (FileNotFoundException e) {
+			//If there is an exception due to file not existing then create a new file
 			File file = new File("RequestAccount.json");
 			try {
 				file.createNewFile();
@@ -55,7 +73,7 @@ public class JSon {
 				e1.printStackTrace();
 			}
 		}
-
+		//returnss the data
 		return request;
 	}
 

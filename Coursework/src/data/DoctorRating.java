@@ -2,6 +2,8 @@ package data;
 
 public class DoctorRating {
 
+	//Unimplemented Rating
+	
 	double rating;
 	String note;
 

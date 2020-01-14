@@ -9,6 +9,7 @@ import data.users.Secretary;
 
 public class DataManager {
 
+	// ArrayLists of all of the different data
 	private static ArrayList<AccountRequest> RequestedAccounts = new ArrayList<AccountRequest>();
 	private static ArrayList<Patient> Patients = new ArrayList<Patient>();
 	private static ArrayList<Doctor> Doctors = new ArrayList<Doctor>();
@@ -20,6 +21,7 @@ public class DataManager {
 	private static ArrayList<MedicineRequest> MedicineRequests = new ArrayList<MedicineRequest>();
 	private static ArrayList<Prescription> Prescriptions = new ArrayList<Prescription>();
 
+	// On load up, all the data is got from the file
 	public static void LoadData() {
 		RequestedAccounts = JSon.getRequestAccounts();
 		Patients = JSon.getPatients();
@@ -34,23 +36,35 @@ public class DataManager {
 
 	}
 
+	// In these "Add" Methods, it gets the data to be added
 	public static void AddAccountRequest(AccountRequest ar) {
+		// Checks to see if the ArrayList, if it is data cant be placed in so it makes
+		// it a new ArrayList
 		if (RequestedAccounts == null)
 			RequestedAccounts = new ArrayList<AccountRequest>();
+		//Adds the data
 		RequestedAccounts.add(ar);
+		//Updates the json file
 		JSon.storeRequestAccount(RequestedAccounts);
 
 	}
 
+	//In these "Remove" methods, it gets the data to be removed
 	public static void RemoveAccountRequest(AccountRequest ar) {
+		//Removes the data
 		RequestedAccounts.remove(ar);
+		//Updates the JSON file
 		JSon.storeRequestAccount(RequestedAccounts);
 
 	}
 
+	//Gets and returns the data needed
 	public static ArrayList<AccountRequest> GetAccountRequests() {
 		return RequestedAccounts;
 	}
+	
+	//Above is done with all of the following, some do not have the remove method
+	
 
 	public static void AddPatient(Patient p) {
 		if (Patients == null)

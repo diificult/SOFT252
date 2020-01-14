@@ -18,21 +18,6 @@ public class AdminScreen extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AdminScreen frame = new AdminScreen();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -64,8 +49,18 @@ public class AdminScreen extends JFrame {
 			}
 		});
 
-		JButton btnFeedback = new JButton("Feedback");
+		JButton btnFeedback = new JButton("Feedback (Unimplemented)");
 		contentPane.add(btnFeedback);
+		btnFeedback.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RatingManager rm = new RatingManager();
+				rm.setVisible(true);
+				dispose();
+				
+			}
+		});
 
 	}
 

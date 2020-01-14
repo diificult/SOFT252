@@ -5,6 +5,8 @@ public class Feedback {
 	private int Rating;
 	private String Feedback;
 
+	//Feedback is a single bit of feedback from one person
+	//This is currently not implemented
 	public void Feedback(String DoctorId, int Rating, String Feedback) {
 		this.DoctorId = DoctorId;
 		this.Rating = Rating;

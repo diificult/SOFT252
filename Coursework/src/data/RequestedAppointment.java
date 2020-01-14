@@ -8,6 +8,7 @@ public class RequestedAppointment {
 	private String PatientID;
 	private Date PotentialDate;
 
+	//Create the object for the requested appointments
 	public RequestedAppointment(String DoctorID, String PatientID, Date PotentialDate) {
 		this.DoctorID = DoctorID;
 		this.PatientID = PatientID;

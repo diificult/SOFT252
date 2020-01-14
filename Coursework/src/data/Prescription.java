@@ -3,6 +3,7 @@ package data;
 import java.util.Date;
 
 public class Prescription {
+	//Data for the prescription
 	private String DoctorID;
 	private String PatientID;
 	private String DoctorNote;
@@ -11,6 +12,8 @@ public class Prescription {
 	private String Dosage;
 	private Date date;
 
+	//Two types of prescription, one with medicine and one without
+	
 	public Prescription(String DoctorID, String PatientID, String DoctorNote, Medicine medicine, int Quantity,
 			String Dosage, Date date) {
 		this.DoctorID = DoctorID;

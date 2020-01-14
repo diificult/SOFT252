@@ -1,6 +1,7 @@
 package data;
 
 public class AccountRequest {
+	//Requested account data, has no ID yet
 	private String RequestedName;
 	private String RequestedSurname;
 	private String RequestedAddress;
