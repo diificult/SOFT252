@@ -1,36 +1,25 @@
 package gui.patient;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
-import javax.swing.JList;
-import java.awt.GridBagConstraints;
-import javax.swing.JButton;
-import java.awt.Insets;
+
+import data.DataManager;
+import data.Prescription;
 
 public class PaitientAppointmentHistory extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PaitientAppointmentHistory frame = new PaitientAppointmentHistory();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
@@ -48,6 +37,8 @@ public class PaitientAppointmentHistory extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
+		
+		DefaultListModel model = new DefaultListModel();
 		JList list = new JList();
 		GridBagConstraints gbc_list = new GridBagConstraints();
 		gbc_list.gridwidth = 2;
@@ -56,6 +47,13 @@ public class PaitientAppointmentHistory extends JFrame {
 		gbc_list.gridx = 0;
 		gbc_list.gridy = 0;
 		contentPane.add(list, gbc_list);
+		ArrayList<Prescription> pres = DataManager.GetPrescription();
+		int i =0;
+		for(Prescription p : pres) {
+			model.add(i, "Dr. " + DataManager.GetDoctor(p.GetDoctorID()).getName() + " " + p.GetDate());
+			i++;
+		}
+		
 		
 		JButton btnNewButton = new JButton("View Details");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();

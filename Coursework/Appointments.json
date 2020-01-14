@@ -5,11 +5,6 @@
     "date": "Mar 1, 2021 11:10:00 AM"
   },
   {
-    "DoctorID": "D0001",
-    "PatientID": "P0001",
-    "date": "May 2, 2020 8:00:00 AM"
-  },
-  {
     "DoctorID": "D0011",
     "PatientID": "P0001",
     "date": "Dec 6, 2020 5:10:00 PM"

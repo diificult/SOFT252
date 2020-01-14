@@ -1,0 +1,14 @@
+[
+  {
+    "DoctorID": "D0001",
+    "PatientID": "P0001",
+    "DoctorNote": "Yes good",
+    "medicine": {
+      "name": "pills",
+      "stock": 0
+    },
+    "Quantity": 4,
+    "Dosage": "4",
+    "date": "May 2, 2020 8:00:00 AM"
+  }
+]

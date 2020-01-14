@@ -1,8 +1,10 @@
 package data; 
-import data.JSon;
-import data.users.*;
-
 import java.util.ArrayList;
+
+import data.users.Admin;
+import data.users.Doctor;
+import data.users.Patient;
+import data.users.Secretary;
 
 public class DataManager {
 	
@@ -12,9 +14,10 @@ public class DataManager {
 	private static ArrayList<Secretary> Secretarys = new ArrayList<Secretary>();
 	private static ArrayList<Admin> Admins = new ArrayList<Admin>();
 	private static ArrayList<RequestedAppointment> RequestedAppointments = new ArrayList<RequestedAppointment>();
-	private static ArrayList <Appointment> Appointments = new ArrayList<Appointment>();
+	private static ArrayList<Appointment> Appointments = new ArrayList<Appointment>();
 	private static ArrayList<Medicine> Medicines = new ArrayList<Medicine>();
 	private static ArrayList<MedicineRequest> MedicineRequests = new ArrayList<MedicineRequest>();
+	private static ArrayList<Prescription> Prescriptions = new ArrayList<Prescription>();
 	
 	
 	public static void LoadData() {
@@ -27,6 +30,7 @@ public class DataManager {
 		Appointments = JSon.getAppointments();
 		Medicines = JSon.getMedicine();
 		MedicineRequests = JSon.getMedicineRequest();
+		Prescriptions = JSon.getPrescription();
 		
 	}
 	
@@ -144,6 +148,11 @@ public class DataManager {
 		JSon.storeAppointment(Appointments);
 	}
 	
+	public static void RemoveAppointment(Appointment a) {
+		Appointments.remove(a);
+		JSon.storeAppointment(Appointments);
+	}
+	
 	public static ArrayList<Appointment> GetAppointments() {
 		return Appointments;
 	}
@@ -178,5 +187,14 @@ public class DataManager {
 		return MedicineRequests;
 	}
 	
+	public static void AddPrescription(Prescription p) {
+		if (Prescriptions == null) Prescriptions = new ArrayList<Prescription>();
+		Prescriptions.add(p);
+		JSon.storePrescription(Prescriptions);
+	}
+	
+	public static ArrayList<Prescription> GetPrescription() {
+		return Prescriptions;
+	}
 }
  

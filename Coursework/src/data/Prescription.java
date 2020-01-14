@@ -27,31 +27,31 @@ public class Prescription {
 		this.date = date;
 	}
 	
-	private String GetDoctorID() {
+	public String GetDoctorID() {
 		return DoctorID;
 	}
 	
-	private String GetPatientID() {
+	public String GetPatientID() {
 		return DoctorNote;
 	}
 	
-	private String GetDoctorNote() {
+	public String GetDoctorNote() {
 		return DoctorNote;
 	}
 	
-	private Medicine GetMedicine() {
+	public Medicine GetMedicine() {
 		return medicine;
 	}
 	
-	private int GetQuantity () {
+	public int GetQuantity () {
 		return Quantity;
 	}
 	
-	private String GetDosage() {
+	public String GetDosage() {
 		return Dosage;
 	}
 	
-	private Date GetDate() {
+	public Date GetDate() {
 		return date;
 	}
 	

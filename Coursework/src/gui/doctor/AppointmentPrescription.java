@@ -16,14 +16,17 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+import data.Appointment;
 import data.DataManager;
 import data.Medicine;
+import data.Prescription;
 import data.users.Doctor;
 import data.users.Patient;
 import gui.Main;
@@ -39,7 +42,7 @@ public class AppointmentPrescription extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AppointmentPrescription(Patient p) {
+	public AppointmentPrescription(Patient p, Appointment a) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 508);
 		contentPane = new JPanel();
@@ -99,7 +102,7 @@ public class AppointmentPrescription extends JFrame {
 		contentPane.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		DefaultComboBoxModel model = new DefaultComboBoxModel();
-		JComboBox cboMedicine = new JComboBox();
+		JComboBox cboMedicine = new JComboBox(model);
 		GridBagConstraints gbc_cboMedicine = new GridBagConstraints();
 		gbc_cboMedicine.gridwidth = 2;
 		gbc_cboMedicine.insets = new Insets(0, 0, 5, 0);
@@ -108,9 +111,11 @@ public class AppointmentPrescription extends JFrame {
 		gbc_cboMedicine.gridy = 5;
 		contentPane.add(cboMedicine, gbc_cboMedicine);
 		ArrayList<Medicine> Meds = DataManager.GetMedicines();
+
 		for (Medicine m : Meds) {
 			model.addElement(m.GetName());
 		}
+		cboMedicine.setSelectedIndex(-1);
 
 		JLabel lblNewLabel_3 = new JLabel("Dosage");
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
@@ -121,6 +126,7 @@ public class AppointmentPrescription extends JFrame {
 		contentPane.add(lblNewLabel_3, gbc_lblNewLabel_3);
 
 		txtDosage = new JTextField();
+		txtDosage.setEnabled(false);
 		GridBagConstraints gbc_txtDosage = new GridBagConstraints();
 		gbc_txtDosage.gridwidth = 2;
 		gbc_txtDosage.insets = new Insets(0, 0, 5, 0);
@@ -139,6 +145,7 @@ public class AppointmentPrescription extends JFrame {
 		contentPane.add(lblNewLabel_4, gbc_lblNewLabel_4);
 
 		JSpinner spQty = new JSpinner();
+		spQty.setEnabled(false);
 		spQty.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		GridBagConstraints gbc_spQty = new GridBagConstraints();
 		gbc_spQty.insets = new Insets(0, 0, 5, 5);
@@ -149,17 +156,19 @@ public class AppointmentPrescription extends JFrame {
 		gbc_cboxMax.insets = new Insets(0, 0, 5, 0);
 		gbc_cboxMax.gridx = 1;
 		gbc_cboxMax.gridy = 9;
+		cboxMax.setEnabled(false);
 		cboxMax.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		contentPane.add(cboxMax, gbc_cboxMax);
-
-		cboMedicine.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent arg0) {
+		cboMedicine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				if (cboMedicine.getSelectedIndex() == -1) {
-					txtDosage.setEditable(false);
+					txtDosage.setEnabled(false);
 					spQty.setEnabled(false);
+					cboxMax.setEnabled(false);
 				} else {
-					txtDosage.setEditable(true);
+					txtDosage.setEnabled(true);
 					spQty.setEnabled(true);
+					cboxMax.setEnabled(true);
 				}
 			}
 		});
@@ -169,9 +178,49 @@ public class AppointmentPrescription extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				String notes = txtNotes.getText();
 				String drName = ((Doctor) Main.getAccount()).getName();
+				int qty = (int) spQty.getValue();
 				if (cboMedicine.getSelectedIndex() != -1) {
 					Medicine m = Meds.get(cboMedicine.getSelectedIndex());
+					if (cboxMax.isSelected()) {
+						qty = m.RemoveStock((int) spQty.getValue(), true);
+						JOptionPane.showMessageDialog(contentPane, "The quantity retrieved was: " + qty);
+					} else {
+						boolean getQty = m.RemoveStock(qty);
+						if (getQty) {
+
+						} else {
+							int override = JOptionPane.showConfirmDialog(null, "Too little Qty",
+									"Would you like to override the medicine ", JOptionPane.YES_NO_OPTION);
+							if (override == 1) {
+								qty = m.RemoveStock((int) spQty.getValue(), true);
+							} else {
+								m = null;
+								qty = 0;
+							}
+						}
+					}
+					if (m != null) {
+						Medicine NewMedicine = new Medicine(m.GetName());
+						Prescription pre = new Prescription(((Doctor) Main.getAccount()).getID(), p.getID(),
+								txtNotes.getText(), NewMedicine, qty, txtDosage.getText(), a.GetDate());
+						DataManager.AddPrescription(pre);
+						DataManager.RemoveAppointment(a);
+					} else {
+						Prescription pre = new Prescription(((Doctor) Main.getAccount()).getID(), p.getID(),
+								txtNotes.getText(), a.GetDate());
+						DataManager.AddPrescription(pre);
+						DataManager.RemoveAppointment(a);
+					}
+
+				} else {
+					Prescription pre = new Prescription(((Doctor) Main.getAccount()).getID(), p.getID(),
+							txtNotes.getText(), a.GetDate());
+					DataManager.AddPrescription(pre);
+					DataManager.RemoveAppointment(a);
 				}
+				Appointments a = new Appointments();
+				a.setVisible(true);
+				dispose();
 			}
 		});
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();
@@ -184,4 +233,3 @@ public class AppointmentPrescription extends JFrame {
 	}
 
 }
-

@@ -364,7 +364,43 @@ public class JSon {
 		
 		return request;
 	}
+	public static void storePrescription(ArrayList<Prescription> ra) {
+		GsonBuilder gb = new GsonBuilder();
+		gb.serializeNulls();
+		gb.setPrettyPrinting();
+		Gson requests = gb.create();
+		FileWriter fw;
+		try {
+			fw = new FileWriter("Prescriptions.json");
+			requests.toJson(ra, fw);
+			fw.flush();
+			fw.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}	
+	}
 	
+	private static final Type PRESCRIPTION_TYPE = new TypeToken<ArrayList<Prescription>>() {
+	}.getType();
+	
+	public static ArrayList<Prescription> getPrescription() {
+		Gson gson = new Gson();
+		ArrayList<Prescription> request = new ArrayList<Prescription>();
+		try {
+			JsonReader jr = new JsonReader(new FileReader("Prescriptions.json"));
+			 request = gson.fromJson(jr, PRESCRIPTION_TYPE);
+		} catch (FileNotFoundException e) {
+			File file = new File("Prescription.json");
+			try {
+				file.createNewFile();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		return request;
+	}
+		
 	
 	
 }

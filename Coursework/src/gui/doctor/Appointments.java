@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -22,6 +24,7 @@ import gui.Main;
 public class Appointments extends JFrame {
 
 	private JPanel contentPane;
+
 	/**
 	 * Create the frame.
 	 */
@@ -32,12 +35,12 @@ public class Appointments extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
-		
+
 		DefaultListModel model = new DefaultListModel();
 		JList lstAppointments = new JList(model);
 		GridBagConstraints gbc_lstAppointments = new GridBagConstraints();
@@ -48,29 +51,50 @@ public class Appointments extends JFrame {
 		gbc_lstAppointments.gridy = 0;
 		contentPane.add(lstAppointments, gbc_lstAppointments);
 		ArrayList<Appointment> apps = DataManager.GetAppointments();
-		Doctor account = (Doctor)Main.getAccount();
+		Doctor account = (Doctor) Main.getAccount();
 		int i = 0;
 		for (Appointment a : apps) {
-			
+
 			if (a.GetDoctorID().equals(account.getID())) {
 				Patient p = DataManager.GetPatient(a.GetPatientID());
 				model.add(i, a.GetDate() + " with " + p.getName() + " " + p.getSurname());
 				i++;
 			}
 		}
-		
+
 		JButton btnStart = new JButton("Start Appointment");
 		GridBagConstraints gbc_btnStart = new GridBagConstraints();
 		gbc_btnStart.insets = new Insets(0, 0, 0, 5);
 		gbc_btnStart.gridx = 0;
 		gbc_btnStart.gridy = 1;
 		contentPane.add(btnStart, gbc_btnStart);
-		
-		JButton btnNewButton_1 = new JButton("Back");
+		btnStart.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Appointment a = apps.get(lstAppointments.getSelectedIndex());
+				Patient p = DataManager.GetPatient(a.GetPatientID());
+				AppointmentPrescription ap = new AppointmentPrescription(p, a);
+				ap.setVisible(true);
+				dispose();
+
+			}
+		});
+
+		JButton btnBack = new JButton("Back");
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.gridx = 1;
 		gbc_btnNewButton_1.gridy = 1;
-		contentPane.add(btnNewButton_1, gbc_btnNewButton_1);	
+		contentPane.add(btnBack, gbc_btnNewButton_1);
+		btnBack.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				DoctorScreen ds = new DoctorScreen((Doctor)Main.getAccount());
+				ds.setVisible(true);
+				dispose();
+			}
+		});
 	}
 
 }

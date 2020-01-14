@@ -9,6 +9,10 @@ public class Medicine {
 		this.name = name;
 		this.stock = stock;
 	}
+	
+	public Medicine(String name) {
+		this.name = name;
+	}
 
 	public String GetName() {
 		return name;
