@@ -30,15 +30,21 @@ public class AdminScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 3, 50, 3));
 
+		
+		//Button to load up the screen to remove accounts
 		JButton btnRemove = new JButton("Remove Account");
 		contentPane.add(btnRemove);
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Gets the class object
 				RemoveAccount rc = new RemoveAccount();
+				//Makes the JFrame visible
 				rc.setVisible(true);
-				contentPane.setVisible(false);
+				//Dispose of this screen to get rid of it
+				dispose();
 			}
 		});
+		//Button to load up the screen to create accounts
 		JButton btnCreate = new JButton("Create Account");
 		contentPane.add(btnCreate);
 		btnCreate.addActionListener(new ActionListener() {
@@ -49,6 +55,7 @@ public class AdminScreen extends JFrame {
 			}
 		});
 
+		//Button to load up the screen where admins can give feedback to the doctors
 		JButton btnFeedback = new JButton("Feedback (Unimplemented)");
 		contentPane.add(btnFeedback);
 		btnFeedback.addActionListener(new ActionListener() {

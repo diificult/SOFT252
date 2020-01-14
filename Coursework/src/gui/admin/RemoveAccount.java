@@ -38,7 +38,9 @@ public class RemoveAccount extends JFrame {
 		gbl_contentPane.rowWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
 
+		//Creates a model for the list of accounts
 		DefaultListModel model = new DefaultListModel();
+		//Makes the list of accounts
 		JList listAccounts = new JList(model);
 		GridBagConstraints gbc_listAccounts = new GridBagConstraints();
 		gbc_listAccounts.gridwidth = 2;
@@ -47,12 +49,15 @@ public class RemoveAccount extends JFrame {
 		gbc_listAccounts.gridx = 0;
 		gbc_listAccounts.gridy = 0;
 		contentPane.add(listAccounts, gbc_listAccounts);
+		//Gets all of the removable accounts
 		ArrayList<Doctor> drs = DataManager.GetDoctors();
 		ArrayList<Secretary> secs = DataManager.GetSecretarys();
 		int i = 0;
+		//Makes sure that there are doctors
 		if (drs != null) {
+			//Gets all of the doctors
 			for (Doctor d : drs) {
-
+				//Adds the doctors to the list
 				model.add(i, d.getID() + " : " + d.getName() + " " + d.getSurname() + ", " + d.getAddress());
 				i++;
 			}
@@ -89,11 +94,24 @@ public class RemoveAccount extends JFrame {
 		contentPane.add(btnRemove, gbc_btnRemove);
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Gets the ID of the selected to be remove accounts
 				String id = model.get(listAccounts.getSelectedIndex()).toString().substring(0, 5);
+				//Goes through each of the doctors
 				for (Doctor d : drs) {
+					//Checks to see if the ids match
 					if (d.getID().equals(id)) {
+						//Remove the selected item
 						model.remove(listAccounts.getSelectedIndex());
+						//Removes the doctor
 						DataManager.RemoveDoctor(d);
+						//Breaks from the check
+						break;
+					}
+				}
+				for (Secretary s : secs) {
+					if (s.getID().equals(id)) {
+						model.remove(listAccounts.getSelectedIndex());
+						DataManager.RemoveSecretary(s);
 						break;
 					}
 				}

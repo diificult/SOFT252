@@ -94,9 +94,12 @@ public class RequestMedicine extends JFrame {
 		JButton btnRequest = new JButton("Request");
 		btnRequest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//makes sure the user has put something in 
 				if (!txtName.getText().isEmpty()) {
+					//Creates a new request
 					MedicineRequest newRquest = new MedicineRequest(txtName.getText(), (int) spQty.getValue());
 					DataManager.AddMedicineRequest(newRquest);
+					//Returns to the main screen
 					DoctorScreen ds = new DoctorScreen((Doctor)Main.getAccount());
 					ds.setVisible(true);
 					dispose();

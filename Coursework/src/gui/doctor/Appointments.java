@@ -50,12 +50,17 @@ public class Appointments extends JFrame {
 		gbc_lstAppointments.gridx = 0;
 		gbc_lstAppointments.gridy = 0;
 		contentPane.add(lstAppointments, gbc_lstAppointments);
+		//Gets the appointments
 		ArrayList<Appointment> apps = DataManager.GetAppointments();
+		//Gets the currently account object from main
 		Doctor account = (Doctor) Main.getAccount();
 		int i = 0;
+		//Goes through the appointments
 		for (Appointment a : apps) {
-
+			//Checks to see if the doctors id matches to know if its his appointments
 			if (a.GetDoctorID().equals(account.getID())) {
+				//Shows the patient details
+		
 				Patient p = DataManager.GetPatient(a.GetPatientID());
 				model.add(i, a.GetDate() + " with " + p.getName() + " " + p.getSurname());
 				i++;
@@ -72,8 +77,10 @@ public class Appointments extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				//Gets the appoint and patients details
 				Appointment a = apps.get(lstAppointments.getSelectedIndex());
 				Patient p = DataManager.GetPatient(a.GetPatientID());
+				//Shows the appointment
 				AppointmentPrescription ap = new AppointmentPrescription(p, a);
 				ap.setVisible(true);
 				dispose();
@@ -90,6 +97,7 @@ public class Appointments extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				//Back to main screen 
 				DoctorScreen ds = new DoctorScreen((Doctor) Main.getAccount());
 				ds.setVisible(true);
 				dispose();

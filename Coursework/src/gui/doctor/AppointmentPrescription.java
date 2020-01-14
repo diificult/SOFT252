@@ -102,6 +102,8 @@ public class AppointmentPrescription extends JFrame {
 		gbc_lblNewLabel_2.gridy = 4;
 		contentPane.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
+		
+		//Makes the model for the combo box
 		DefaultComboBoxModel model = new DefaultComboBoxModel();
 		JComboBox cboMedicine = new JComboBox(model);
 		GridBagConstraints gbc_cboMedicine = new GridBagConstraints();
@@ -111,11 +113,14 @@ public class AppointmentPrescription extends JFrame {
 		gbc_cboMedicine.gridx = 0;
 		gbc_cboMedicine.gridy = 5;
 		contentPane.add(cboMedicine, gbc_cboMedicine);
+		//Gets all the medicine
 		ArrayList<Medicine> Meds = DataManager.GetMedicines();
 
 		for (Medicine m : Meds) {
+			//Adds all the medicine
 			model.addElement(m.GetName());
 		}
+		//Set the selected medicine as blank
 		cboMedicine.setSelectedIndex(-1);
 
 		JLabel lblNewLabel_3 = new JLabel("Dosage");
@@ -160,6 +165,7 @@ public class AppointmentPrescription extends JFrame {
 		cboxMax.setEnabled(false);
 		cboxMax.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		contentPane.add(cboxMax, gbc_cboxMax);
+		//Enables and disables the medicine data depending if there is a medicine selected
 		cboMedicine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (cboMedicine.getSelectedIndex() == -1) {
@@ -177,36 +183,53 @@ public class AppointmentPrescription extends JFrame {
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//Gets the note and the doctor details
 				String notes = txtNotes.getText();
 				String drName = ((Doctor) Main.getAccount()).getName();
+				//Gets the quantity of the medicine
 				int qty = (int) spQty.getValue();
+				//Checks to see if there is medicine selected
 				if (cboMedicine.getSelectedIndex() != -1) {
+					//Makes a  new medicine
 					Medicine m = Meds.get(cboMedicine.getSelectedIndex());
+					//Checks to see if the user wants to get the maximum number of qty regardless of stock
 					if (cboxMax.isSelected()) {
+						//Removes the stock saying getting the max
 						qty = m.RemoveStock((int) spQty.getValue(), true);
+						//Tells the user how much stock was retrieved
 						JOptionPane.showMessageDialog(contentPane, "The quantity retrieved was: " + qty);
 					} else {
+						//Attempts to remove the stock
 						boolean getQty = m.RemoveStock(qty);
 						if (getQty) {
 
+							//If they couldnt get the stock
 						} else {
+							//Checks to see if they want to get the maximum number of stock anyways
 							int override = JOptionPane.showConfirmDialog(null, "Too little Qty",
 									"Would you like to override the medicine ", JOptionPane.YES_NO_OPTION);
 							if (override == 1) {
+								//If they do then remove the stocks
 								qty = m.RemoveStock((int) spQty.getValue(), true);
 							} else {
+								//If not clear the medicine
 								m = null;
 								qty = 0;
 							}
 						}
 					}
+					//if there is medicine
 					if (m != null) {
+						
+						//Adds the prescription with the medicine details
 						Medicine NewMedicine = new Medicine(m.GetName());
 						Prescription pre = new Prescription(((Doctor) Main.getAccount()).getID(), p.getID(),
 								txtNotes.getText(), NewMedicine, qty, txtDosage.getText(), a.GetDate());
 						DataManager.AddPrescription(pre);
+						//Remove the appointment as its been done
 						DataManager.RemoveAppointment(a);
 					} else {
+						//Otherwise adds the prescription with no medicine data
 						Prescription pre = new Prescription(((Doctor) Main.getAccount()).getID(), p.getID(),
 								txtNotes.getText(), a.GetDate());
 						DataManager.AddPrescription(pre);
@@ -219,6 +242,7 @@ public class AppointmentPrescription extends JFrame {
 					DataManager.AddPrescription(pre);
 					DataManager.RemoveAppointment(a);
 				}
+				//Returns to the appointment menu
 				Appointments a = new Appointments();
 				a.setVisible(true);
 				dispose();

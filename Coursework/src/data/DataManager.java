@@ -132,6 +132,11 @@ public class DataManager {
 		JSon.storeSecretarys(Secretarys);
 
 	}
+	
+	public static void RemoveSecretary(Secretary s) {
+		Secretarys.remove(s);
+		JSon.storeSecretarys(Secretarys);
+	}
 
 	public static ArrayList<Secretary> GetSecretarys() {
 		return Secretarys;

@@ -48,17 +48,22 @@ public class DoctorScreen extends JFrame {
 			}
 		});
 
+		//Gets any notifications
 		ArrayList<Appointment> appointmentNotificaiton = d.getNotification();
 		if (appointmentNotificaiton != null) {
+			//Shows that the appointments been approved
 			String message = "The following appointments have been approved: \n ";
-
+			//Goes through the list of new appointments adding them to the end of the string
 			for (Appointment notifi : appointmentNotificaiton) {
 				Patient p = DataManager.GetPatient(notifi.GetPatientID());
 				message += notifi.GetDate() + " with " + d.getName() + " " + d.getSurname() + " \n";
 
 			}
+			//Shows the messages 
 			JOptionPane.showMessageDialog(contentPane, message, "Notification", JOptionPane.PLAIN_MESSAGE);
+			//Clears the notification
 			d.RemoveNotifications();
+			//Updates the doctors without the notification
 			DataManager.UpdateDoctor();
 		}
 	}
