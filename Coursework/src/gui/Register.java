@@ -120,19 +120,23 @@ public class Register extends JFrame {
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//gets account details
 				String name = txtName.getText();
 				String Surname = txtSurname.getText();
 				String address = txtAddress.getText();
 				int age = (int) spAge.getValue();
 				char gender = 'n';
+				//Checks gender
 				if (rbtnFemale.isEnabled()) {
 					gender = 'f';
 				} else {
 					gender = 'm';
 				}
 				String password = txtPassword.getText();
+				//Creates account request
 				AccountRequest newAccount = new AccountRequest(name, Surname, address, age, gender, password);
 				DataManager.AddAccountRequest(newAccount);
+				//Tells the user that the account request has been placed for them
 				JOptionPane.showMessageDialog(contentPane,
 						"You account request has been placed, please wait to hear back from a secretary");
 			}

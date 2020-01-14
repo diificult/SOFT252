@@ -58,11 +58,16 @@ public class Login extends JFrame {
 		btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Gets which role is being logged into
 				char role = Character.toUpperCase(txtID.getText().charAt(0));
+				//Switch case for this
 				switch (role) {
 				case 'P':
+					//Gets all of the patients
 					ArrayList<Patient> patients = DataManager.GetPatients();
+					//Goes through them all
 					for (Patient p : patients) {
+						//if the ID and password matches then it will allowed to be logged in
 						if (txtID.getText().equalsIgnoreCase(p.getID())
 								&& txtPassword.getText().equalsIgnoreCase(p.getPassword())) {
 							Main.OpenPatient(p);
@@ -70,6 +75,7 @@ public class Login extends JFrame {
 
 						}
 					}
+					//Breaks from case
 					break;
 				case 'D':
 					ArrayList<Doctor> drs = DataManager.GetDoctors();
@@ -92,20 +98,18 @@ public class Login extends JFrame {
 					}
 					break;
 				case 'A':
-					System.out.print(1);
+
 					ArrayList<Admin> admins = DataManager.GetAdmins();
 					for (Admin a : admins) {
-						System.out.print(2);
-						System.out.print(txtID.getText() + " " + txtPassword.getText());
 						if (txtID.getText().equalsIgnoreCase(a.getID())
 								&& txtPassword.getText().equalsIgnoreCase(a.getPassword())) {
-							System.out.print(3);
 							Main.OpenAdmin(a);
 							dispose();
 						}
 					}
 					break;
 				default:
+					//If it doesnt match any type then dont do anything
 					break;
 				}
 			}

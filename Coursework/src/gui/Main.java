@@ -13,8 +13,11 @@ import gui.secretary.SectetaryScreen;
 
 public class Main {
 
+	//Stores the currently loged in account
 	private static Object Account = new Object();
 
+	
+	//Here hold the main, it starts the program
 	public static void main(String[] args) {
 		MainScreen ms = new MainScreen();
 		ms.setVisible(true);
