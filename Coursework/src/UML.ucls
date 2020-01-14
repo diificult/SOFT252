@@ -94,7 +94,7 @@
   </class>  
   <class id="11" language="java" name="data.DoctorRating" project="Coursework" 
     file="/Coursework/src/data/DoctorRating.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="122" width="195" x="435" y="37"/>    
+    <position height="-1" width="-1" x="980" y="94"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -256,7 +256,7 @@
   </class>  
   <class id="29" language="java" name="gui.admin.RatingManager" project="Coursework" 
     file="/Coursework/src/gui/admin/RatingManager.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="140" width="151" x="5378" y="37"/>    
+    <position height="-1" width="-1" x="2557" y="431"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -274,7 +274,7 @@
   </class>  
   <class id="31" language="java" name="gui.doctor.AppointmentPrescription" project="Coursework" 
     file="/Coursework/src/gui/doctor/AppointmentPrescription.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="305" x="4801" y="37"/>    
+    <position height="-1" width="-1" x="2057" y="449"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -283,7 +283,7 @@
   </class>  
   <class id="32" language="java" name="gui.doctor.Appointments" project="Coursework" 
     file="/Coursework/src/gui/doctor/Appointments.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="104" width="151" x="244" y="37"/>    
+    <position height="-1" width="-1" x="767" y="85"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -319,7 +319,7 @@
   </class>  
   <class id="36" language="java" name="gui.patient.PatientAppointmentList" project="Coursework" 
     file="/Coursework/src/gui/patient/PatientAppointmentList.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="122" width="192" x="5146" y="37"/>    
+    <position height="-1" width="-1" x="2346" y="422"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -328,7 +328,7 @@
   </class>  
   <class id="37" language="java" name="gui.patient.PrescriptionScreen" project="Coursework" 
     file="/Coursework/src/gui/patient/PrescriptionScreen.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="212" width="163" x="5762" y="37"/>    
+    <position height="-1" width="-1" x="2947" y="467"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -337,7 +337,7 @@
   </class>  
   <class id="38" language="java" name="gui.patient.PatientScreen" project="Coursework" 
     file="/Coursework/src/gui/patient/PatientScreen.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="104" width="162" x="6156" y="37"/>    
+    <position height="-1" width="-1" x="3341" y="413"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -355,7 +355,7 @@
   </class>  
   <class id="40" language="java" name="gui.patient.CreateAppointment" project="Coursework" 
     file="/Coursework/src/gui/patient/CreateAppointment.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="104" width="163" x="41" y="37"/>    
+    <position height="-1" width="-1" x="570" y="85"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -364,7 +364,7 @@
   </class>  
   <class id="41" language="java" name="gui.patient.AppointmentDetails" project="Coursework" 
     file="/Coursework/src/gui/patient/AppointmentDetails.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="158" width="225" x="4536" y="37"/>    
+    <position height="-1" width="-1" x="1752" y="440"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -382,7 +382,7 @@
   </class>  
   <class id="43" language="java" name="gui.secretary.RemovePatients" project="Coursework" 
     file="/Coursework/src/gui/secretary/RemovePatients.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="104" width="151" x="5965" y="37"/>    
+    <position height="-1" width="-1" x="3144" y="413"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -391,7 +391,7 @@
   </class>  
   <class id="44" language="java" name="gui.secretary.ApproveAccounts" project="Coursework" 
     file="/Coursework/src/gui/secretary/ApproveAccounts.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="104" width="153" x="5569" y="37"/>    
+    <position height="-1" width="-1" x="2749" y="413"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -400,7 +400,7 @@
   </class>  
   <class id="45" language="java" name="gui.secretary.ApproveMedicine" project="Coursework" 
     file="/Coursework/src/gui/secretary/ApproveMedicine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="122" width="151" x="4345" y="37"/>    
+    <position height="-1" width="-1" x="1524" y="422"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
