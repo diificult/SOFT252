@@ -100,7 +100,9 @@ public class CreateAccount extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				UserFactory.CreateUser(comboBox.getSelectedItem().toString(), txtName.getText(), txtSurname.getText(),
 						txtAddress.getText(), txtPassword.getText());
-				;
+				AdminScreen as = new AdminScreen();
+				as.setVisible(true);
+				dispose();
 			}
 		});
 		btnSubmit.setBounds(163, 251, 89, 23);

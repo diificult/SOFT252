@@ -48,6 +48,13 @@ public class Patient implements iUser, Observer {
 	public String getAddress() {
 		return address;
 	}
+	
+	public int getAge() {
+		return age;
+	}
+	public char getGender() {
+		return gender;
+	}
 
 	@Override
 	public String getPassword() {

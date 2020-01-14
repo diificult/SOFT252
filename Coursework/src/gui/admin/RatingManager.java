@@ -11,6 +11,9 @@ import javax.swing.JList;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
@@ -19,22 +22,6 @@ public class RatingManager extends JFrame {
 
 	private JPanel contentPane;
 	private JTextPane textField;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RatingManager frame = new RatingManager();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -89,6 +76,16 @@ public class RatingManager extends JFrame {
 		gbc_btnBack.gridx = 2;
 		gbc_btnBack.gridy = 2;
 		contentPane.add(btnBack, gbc_btnBack);
+		btnBack.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AdminScreen as = new AdminScreen();
+				as.setVisible(true);
+				dispose();
+				
+			}
+		});
 	}
 
 }

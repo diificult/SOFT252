@@ -83,11 +83,7 @@ public class CreateAppointment extends JFrame {
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// System.out.println("Here");
-				// SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-				// String date = spDay.getValue() + "/" + spMonth.getValue() + "/" +
-				// spYear.getValue();
-				// String date = formatter.format(unformatedDate);
+
 				Date date = new Date((int) spYear.getValue() - 1900, (int) spMonth.getValue() - 1,
 						(int) spDay.getValue(), (int) spHour.getValue(), (int) spMinute.getValue(), 0);
 				System.out.println(date);
@@ -106,6 +102,12 @@ public class CreateAppointment extends JFrame {
 
 				RequestedAppointment ra = new RequestedAppointment(DrId, PatientID, date);
 				DataManager.AddRequestedAppointment(ra);
+				
+				PatientScreen ps = new PatientScreen(Patient);
+				ps.setVisible(true);
+				dispose();
+				
+				
 			}
 		});
 		btnSubmit.setBounds(162, 192, 89, 23);

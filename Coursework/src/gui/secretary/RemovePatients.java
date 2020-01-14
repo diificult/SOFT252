@@ -73,6 +73,17 @@ public class RemovePatients extends JFrame {
 		gbc_btnBack.gridx = 1;
 		gbc_btnBack.gridy = 1;
 		contentPane.add(btnBack, gbc_btnBack);
+		btnBack.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SectetaryScreen ss= new SectetaryScreen();
+				ss.setVisible(true);
+				dispose();
+				
+				
+			}
+		});
 	}
 
 }

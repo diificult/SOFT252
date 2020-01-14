@@ -54,9 +54,9 @@ public class ApproveMedicine extends JFrame {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
-		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-		gbl_contentPane.rowWeights = new double[] { 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
 
 		JLabel lblNewLabel = new JLabel("Medicines");
@@ -113,9 +113,23 @@ public class ApproveMedicine extends JFrame {
 			}
 		});
 		GridBagConstraints gbc_btnApprove = new GridBagConstraints();
+		gbc_btnApprove.insets = new Insets(0, 0, 5, 0);
 		gbc_btnApprove.gridx = 0;
 		gbc_btnApprove.gridy = 4;
 		contentPane.add(btnApprove, gbc_btnApprove);
+
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SectetaryScreen ss = new SectetaryScreen();
+				ss.setVisible(true);
+				dispose();
+			}
+		});
+		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.gridx = 0;
+		gbc_btnBack.gridy = 5;
+		contentPane.add(btnBack, gbc_btnBack);
 	}
 
 }

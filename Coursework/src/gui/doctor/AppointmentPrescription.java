@@ -74,6 +74,7 @@ public class AppointmentPrescription extends JFrame {
 		gbc_txtPaitient.gridy = 1;
 		contentPane.add(txtPaitient, gbc_txtPaitient);
 		txtPaitient.setColumns(10);
+		txtPaitient.setText(p.getName() + " " + p.getSurname() + " ," + p.getAddress() + " Age:" + p.getAge() + " Gender:" + p.getGender());
 
 		JLabel lblNewLabel_1 = new JLabel("Add Notes");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();

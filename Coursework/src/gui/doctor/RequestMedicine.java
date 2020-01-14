@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 import data.DataManager;
 import data.MedicineRequest;
+import data.users.Doctor;
+import gui.Main;
 
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -95,6 +97,10 @@ public class RequestMedicine extends JFrame {
 				if (!txtName.getText().isEmpty()) {
 					MedicineRequest newRquest = new MedicineRequest(txtName.getText(), (int) spQty.getValue());
 					DataManager.AddMedicineRequest(newRquest);
+					DoctorScreen ds = new DoctorScreen((Doctor)Main.getAccount());
+					ds.setVisible(true);
+					dispose();
+					
 				}
 			}
 		});
